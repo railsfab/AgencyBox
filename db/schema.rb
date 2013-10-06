@@ -15,11 +15,14 @@ ActiveRecord::Schema.define(version: 20131006071854) do
 
   create_table "expense_categories", force: true do |t|
     t.string   "name"
+    t.string   "slug"
     t.decimal  "max_limit",   default: 0.0
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "expense_categories", ["slug"], name: "index_expense_categories_on_slug", unique: true
 
   create_table "expenses", force: true do |t|
     t.integer  "user_id"
