@@ -7,7 +7,7 @@ AgencyBox::Application.routes.draw do
   get "expense/:id" => "expense#show", as: :expense_show
   post "expense/create"
  
-  get "expense/category/" => "expense_category#index"
+  get "expense/category/index" => "expense_category#index"
   get "expense/category/new" => "expense_category#new"
   post "expense/category/create" => "expense_category#create"
   get "expense/category/:slug" => "expense_category#show", as: "expense_category_show"
