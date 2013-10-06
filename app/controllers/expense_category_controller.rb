@@ -10,7 +10,7 @@ class ExpenseCategoryController < ApplicationController
     end
 
     def create
-        @category = ExpenseCategory.new new_category_params
+        @category = ExpenseCategory.new create_category_params
         if @category.valid?
             @category.save
             redirect_to :expense_category_index
@@ -25,7 +25,7 @@ class ExpenseCategoryController < ApplicationController
 
     private
 
-    def new_category_params
+    def create_category_params
         params.require(:expense_category).permit(:name, :description)
     end
 
