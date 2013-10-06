@@ -1,6 +1,6 @@
 <button class='btn btn-info btn-lg bottom-flat'>Categories</button>
-<% @all.each do |each| %>
+<% @all.each do |category| %>
     <div class='well'>
-        <%= each.name %>
+        <%= link_to category.name, expense_category_show_path(category.slug) %>
     </div>
 <% end %>

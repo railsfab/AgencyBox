@@ -19,6 +19,10 @@ class ExpenseCategoryController < ApplicationController
         end
     end
 
+    def show
+        @category = ExpenseCategory.find_by slug: params[:slug]
+    end
+
     private
 
     def new_category_params
