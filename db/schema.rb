@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20131006071854) do
 
   create_table "expense_categories", force: true do |t|
     t.string   "name"
-    t.decimal  "max_limit"
+    t.decimal  "max_limit",   default: 0.0
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
