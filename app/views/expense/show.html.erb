@@ -1,0 +1,16 @@
+<button class='btn btn-info btn-lg bottom-flat'>Expense Details</button>
+<div class='well'>
+    <dl class='dl-horizontal'>
+        <dt>Amount: </dt>
+        <dd><%= @expense.amount %></dd>
+
+        <dt>Description: </dt>
+        <dd><%= @expense.description %></dd>
+
+        <dt>Status:</dt>
+        <dd><%= @expense.status %></dd>
+
+        <dt>Category: </dt>
+        <dd><%= link_to @expense.category.name, expense_category_show_path(@expense.category.slug) %></dd>
+    </dl>
+</div>

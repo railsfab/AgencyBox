@@ -1,10 +1,13 @@
 AgencyBox::Application.routes.draw do
   devise_for :users
   root to: "home#index"
+
   get "expense/new"
+  get "expense/index"
+  get "expense/show/:id" => "expense#show", as: :expense_show
   post "expense/create"
  
-  get "expense/category/index" => "expense_category#index"
+  get "expense/category/" => "expense_category#index"
   get "expense/category/new" => "expense_category#new"
   post "expense/category/create" => "expense_category#create"
   get "expense/category/show/:slug" => "expense_category#show", as: "expense_category_show"

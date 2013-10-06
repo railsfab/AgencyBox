@@ -1,0 +1,18 @@
+<button class='btn btn-info btn-lg bottom-flat'>Create Expense</button>
+<div class='well'>
+<% if @expense.errors.any? %>
+    <p class='alert alert-danger'>Errors</p>
+    <% @expense.errors.full_messages.each do |e| %>
+        <p class='text-danger'><%= e %></p>
+    <% end %>
+<% end %>
+<%= form_for @expense, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+    <%= f.text_field :amount , class: 'form-control', placeholder: 'Amount' %>
+    <br />
+    <%= f.text_area :description, size: "60x12", class: 'form-control', placeholder: 'Description'   %>
+    <br />
+    <%= f.select :category_id, Categories: @expense.categories %>
+    <%= f.submit "Create", class: "btn btn-primary"%>
+
+<% end %>
+</div>

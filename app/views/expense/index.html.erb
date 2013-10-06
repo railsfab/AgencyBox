@@ -1,0 +1,6 @@
+<button class='btn btn-info btn-lg bottom-flat'>Expenses</button>
+<% @expenses.each do |expense| %>
+    <div class='well'>
+        <%= link_to expense.amount, expense_show_path(expense) %>
+    </div>
+<% end %>
