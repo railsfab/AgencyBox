@@ -1,6 +1,13 @@
 AgencyBox::Application.routes.draw do
   devise_for :users
-    root to: "home#index"
+  root to: "home#index"
+  get "expense/new"
+  post "expense/create"
+ 
+  get "expense/category/index" => "expense_category#index"
+  get "expense/category/new" => "expense_category#new"
+  post "expense/category/create" => "expense_category#create"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
