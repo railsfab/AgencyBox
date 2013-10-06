@@ -8,4 +8,16 @@ class Expense < ActiveRecord::Base
     def categories
         ExpenseCategory.pluck(:name, :id)
     end
+
+    def status_display
+        status = "Pending"
+        if self.status
+            status = "Approved"
+        else
+            if self.rejected
+                status = "Rejected"
+            end
+        end
+        status
+    end
 end

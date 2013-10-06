@@ -8,7 +8,7 @@
         <dd><%= @expense.description %></dd>
 
         <dt>Status:</dt>
-        <dd><%= @expense.status %></dd>
+        <dd><%= @expense.status_display %></dd>
 
         <dt>Category: </dt>
         <dd><%= link_to @expense.category.name, expense_category_show_path(@expense.category.slug) %></dd>
