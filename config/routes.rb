@@ -4,13 +4,13 @@ AgencyBox::Application.routes.draw do
 
   get "expense/new"
   get "expense/index"
-  get "expense/show/:id" => "expense#show", as: :expense_show
+  get "expense/:id" => "expense#show", as: :expense_show
   post "expense/create"
  
   get "expense/category/" => "expense_category#index"
   get "expense/category/new" => "expense_category#new"
   post "expense/category/create" => "expense_category#create"
-  get "expense/category/show/:slug" => "expense_category#show", as: "expense_category_show"
+  get "expense/category/:slug" => "expense_category#show", as: "expense_category_show"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
