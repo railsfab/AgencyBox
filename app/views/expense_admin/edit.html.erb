@@ -1,0 +1,26 @@
+<div class='well'>
+    <dl class='dl-horizontal'>
+        <dt>Amount:</dt>
+        <dd><%= @expense.amount %></dd>
+
+        <dt>User:</dt>
+        <dd><%= @expense.user.available_name %></dd>
+
+        <dt>Status:</dt>
+        <dd><%= @expense.status_display %></dd>
+
+        <dt>Modify Status:</dl>
+        <dd>
+        <form action='<%= expense_admin_modify_path(@expense) %>' method='post'>
+            <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>' />
+                <select name='expense_status'>
+                    <option value='Pending'>Pending</option>
+                    <option value='Approved'>Approve</option>
+                    <option value='Rejected'>Reject</option>
+                </select>
+                <input type='submit' class='btn btn-lg btn-primary' value='Edit' />
+            </form>
+        </dd>
+    </dl>
+
+</div>

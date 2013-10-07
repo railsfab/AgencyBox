@@ -1,0 +1,4 @@
+<% @expenses.each do |expense| %>
+    <%= link_to expense.amount, expense_admin_edit_path(expense) %>
+<% end %>
+
