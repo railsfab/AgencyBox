@@ -13,5 +13,7 @@
         <dt>Category: </dt>
         <dd><%= link_to @expense.category.name, expense_category_show_path(@expense.category.slug) %></dd>
     </dl>
-    <%= link_to :EditByAdmin, :expense_admin_edit %>
+    <% if current_user.has_role? :admin %>
+    <%= link_to :Edit, :expense_admin_edit %>
+    <% end %>
 </div>
