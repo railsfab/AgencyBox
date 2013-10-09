@@ -19,6 +19,22 @@ class ExpenseCategoryController < ApplicationController
         end
     end
 
+    def edit
+        @category = ExpenseCategory.find params[:id]
+    end
+
+    def modify
+        @category = ExpenseCategory.find params[:id]
+        @category.assign_attributes create_category_params
+        
+        if @category.valid?
+            @category.save
+            redirect_to expense_category_show_path(slug: @category.slug)
+        else
+            render :edit
+        end
+    end
+
     def show
         @category = ExpenseCategory.find_by slug: params[:slug]
     end
