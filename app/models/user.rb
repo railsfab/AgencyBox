@@ -5,6 +5,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
 
+  include RoleModel
+
+  roles :admin, :manager
+
   def available_name
       full_name = "#{self.first_name} #{self.last_name}"
       if full_name.strip.length > 0
