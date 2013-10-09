@@ -2,7 +2,11 @@ class ExpenseController < ApplicationController
     before_filter :authenticate_user!
 
     def index
-        @expenses = Expense.where user: current_user
+        if current_user.has_role? :admin
+            @expenses = Expense.all
+        else
+            @expenses = Expense.where user: current_user
+        end
     end
 
     def new
