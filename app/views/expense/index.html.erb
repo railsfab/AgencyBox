@@ -4,3 +4,8 @@
         <%= link_to expense.amount, expense_show_path(expense) %>
     </div>
 <% end %>
+<% if @expenses.empty? %>
+    <div class="well">
+        You have not made any expense claims yet !
+    </div>
+<% end %>
