@@ -1,3 +1,5 @@
+
+<div class="left-pane">
 <button class='btn btn-info btn-lg bottom-flat' id="filter-main-btn">Filter</button>
 <div class="well filter-box" >
 
@@ -38,6 +40,8 @@
 
     <button id="submit-filter" class="btn btn-primary">Filter</button>
 </div>
+</div>
+<div class='right-pane'>
 <button class='btn btn-info btn-lg bottom-flat'>Expenses</button>
 <% @expenses.each do |expense| %>
     <div class='well'>
@@ -52,6 +56,7 @@
         <% end %>
     </div>
 <% end %>
+</div>
 
 
 <%= javascript_include_tag "expense_admin", "data-turbolinks-track" => true %>
