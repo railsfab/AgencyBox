@@ -32,3 +32,49 @@ body.html-body {
 .box-header.btn { display: block; }
 .box-header.btn-info a { color: white; font-weight: bold; }
 .box-content { padding: 19px; }
+
+.badge:hover {
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+}
+.badge.badge-error {
+  background-color: #b94a48;
+}
+.badge.badge-error:hover {
+  background-color: #953b39;
+}
+.badge.badge-warning {
+  background-color: #f89406;
+}
+.badge.badge-warning:hover {
+  background-color: #c67605;
+}
+.badge.badge-success {
+  background-color: #468847;
+}
+.badge.badge-success:hover {
+  background-color: #356635;
+}
+.badge.badge-info {
+  background-color: #3a87ad;
+}
+.badge.badge-info:hover {
+  background-color: #2d6987;
+}
+.badge.badge-inverse {
+  background-color: #333333;
+}
+.badge.badge-inverse:hover {
+  background-color: #1a1a1a;
+}
+
+.medium-text {  display: inline-block; }
+
+.small-box { min-width: 100px; border: 1px solid #5bc0de; border-top-left-radius: 7px;
+    border-top-right-radius: 7px; display: inline-block; }
+
+.box-header {
+    background-color: #5bc0de; color: whitesmoke; border-top-left-radius: 5px;
+    border-top-right-radius: 5px;  text-align: center; padding: 5px; }
+
