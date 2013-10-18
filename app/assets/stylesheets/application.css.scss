@@ -69,12 +69,13 @@ body.html-body {
   background-color: #1a1a1a;
 }
 
-.medium-text {  display: inline-block; }
+.medium-text {  display: inline-block; width: 250px; }
 
 .small-box { min-width: 100px; border: 1px solid #5bc0de; border-top-left-radius: 7px;
-    border-top-right-radius: 7px; display: inline-block; }
+    border-top-right-radius: 7px; display: inline-block; margin-bottom: 20px; }
 
 .box-header {
     background-color: #5bc0de; color: whitesmoke; border-top-left-radius: 5px;
     border-top-right-radius: 5px;  text-align: center; padding: 5px; }
+
 
