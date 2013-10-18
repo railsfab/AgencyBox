@@ -4,8 +4,8 @@ class CreateExpenses < ActiveRecord::Migration
       t.integer :user_id
       t.integer :category_id
       t.decimal :amount
-      t.boolean :status
-      t.boolean :rejected
+      t.boolean :status,       default: false
+      t.boolean :rejected,     default: false
       t.string :description
 
       t.timestamps
