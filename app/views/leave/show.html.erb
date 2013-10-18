@@ -1,0 +1,22 @@
+<button class='btn btn-info btn-lg bottom-flat'>Leave Details</button>
+<div class='well'>
+    <dl class='dl-horizontal'>
+        <dt>From: </dt>
+        <dd><%= @leave.from %></dd>
+
+        <dt>To: </dt>
+        <dd><%= @leave.to %></dd>
+
+        <dt>Reason: </dt>
+        <dd><%= @leave.reason %></dd>
+
+        <dt>Num of days: </dt>
+        <dd><%= @leave.num_of_days %></dd>
+
+        <dt>Status:</dt>
+        <dd><%= @leave.status_display %></dd>
+
+        <dt>Category: </dt>
+        <dd><%= link_to @leave.category.name, leave_category_show_path(@leave.category) %></dd>
+    </dl>
+</div>

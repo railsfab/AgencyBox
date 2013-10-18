@@ -26,6 +26,14 @@ AgencyBox::Application.routes.draw do
   get "leave/category/index" => "leave_category#index", as: "leave_category_index"
   get "leave/category/:id" => "leave_category#show", as: "leave_category_show"
 
+  get "leave/new"
+  #get "leave/edit/:id"
+  post "leave/create"
+  #patch "leave/modify"
+  get "leave/index"
+  get "leave/show/:id" => "leave#show", as: "leave_show"
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
