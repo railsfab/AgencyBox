@@ -19,6 +19,13 @@ AgencyBox::Application.routes.draw do
   get "admin/expense/category/edit/:id" => "expense_category#edit", as: "expense_category_admin_edit"
   patch "admin/expense/category/modify/:id" => "expense_category#modify", as: "expense_category_admin_modify"
 
+  get "admin/leave/category/new" => "leave_category#new", as: "leave_category_new"
+  get "admin/leave/category/edit/:id" => "leave_category#edit", as: "leave_category_edit"
+  post "admin/leave/category/create" => "leave_category#create", as: "leave_category_create"
+  patch "admin/leave/category/modify/:id" => "leave_category#modify", as: "leave_category_modify"
+  get "leave/category/index" => "leave_category#index", as: "leave_category_index"
+  get "leave/category/:id" => "leave_category#show", as: "leave_category_show"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

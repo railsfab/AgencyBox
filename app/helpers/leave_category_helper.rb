@@ -1,0 +1,2 @@
+module LeaveCategoryHelper
+end
