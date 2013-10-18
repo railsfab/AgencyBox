@@ -17,9 +17,6 @@ $("#submit-filter").click ->
   pathname = pathname.replace(/&$/, "")
   window.location = pathname
 
-$("#filter-main-btn").click ->
-  $(".filter-box").slideToggle()
-
 
 $(document).ready ->
   search = location.search.replace(/^\?/, "").split("&")
