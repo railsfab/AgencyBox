@@ -1,7 +1,7 @@
 <button class='btn btn-info btn-lg bottom-flat'>My Leaves</button>
 <% @leaves.each do |leave| %>
     <div class='well'>
-        <%= link_to leave.from, leave_show_path(leave) %>
+        <%= link_to leave.start_date, leave_show_path(leave) %>
     </div>
 <% end %>
 <% if @leaves.empty? %>

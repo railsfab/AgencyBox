@@ -44,13 +44,13 @@ ActiveRecord::Schema.define(version: 20131009234433) do
 
   create_table "leave_applications", force: true do |t|
     t.text     "reason"
-    t.date     "from"
-    t.date     "to"
+    t.date     "start_date"
+    t.date     "end_date"
     t.integer  "num_of_days"
     t.integer  "user_id"
     t.integer  "category_id"
-    t.boolean  "status"
-    t.boolean  "rejected"
+    t.boolean  "status",      default: false
+    t.boolean  "rejected",    default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

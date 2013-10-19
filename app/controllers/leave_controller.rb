@@ -22,6 +22,23 @@ class LeaveController < ApplicationController
         else
             @leaves = LeaveApplication.where user: current_user
         end
+        if params.include?("status")
+            if params['status'] == "pending"
+                @leaves = @leaves.where({ :status => false, :rejected => false })
+            elsif params["status"] == "approved"
+                @leaves = @leaves.where({ :status => true, :rejected => false })
+            elsif params["status"] == "rejected"
+                @leaves = @leaves.where({ :status => false, :rejected => true })
+            end
+        end
+
+        if params.include?(:amount_filter)
+            if params[:amount_filter] == "asc"
+                @leaves = @leaves.order("reason ASC")
+            elsif params[:amount_filter] == "desc"
+                @leaves = @leaves.order("reason desc")
+            end
+        end
     end
 
     def show
@@ -32,6 +49,6 @@ class LeaveController < ApplicationController
     private
 
     def new_leave_params
-        params.require(:leave_application).permit(:from, :to, :reason, :category_id)
+        params.require(:leave_application).permit(:start_date, :end_date, :reason, :category_id)
     end
 end
