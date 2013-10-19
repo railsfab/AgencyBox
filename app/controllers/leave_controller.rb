@@ -1,4 +1,5 @@
 class LeaveController < ApplicationController
+    before_filter :authenticate_user!
 
     def new
         @leave = LeaveApplication.new
@@ -16,7 +17,7 @@ class LeaveController < ApplicationController
     end
 
     def index
-        @leaves = LeaveApplication.all
+        @leaves = LeaveApplication.where user: current_user
     end
 
     def show
