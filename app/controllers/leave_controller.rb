@@ -34,9 +34,9 @@ class LeaveController < ApplicationController
 
         if params.include?(:amount_filter)
             if params[:amount_filter] == "asc"
-                @leaves = @leaves.order("reason ASC")
+                @leaves = @leaves.order("start_date ASC")
             elsif params[:amount_filter] == "desc"
-                @leaves = @leaves.order("reason desc")
+                @leaves = @leaves.order("start_date desc")
             end
         end
     end
