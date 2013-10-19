@@ -24,6 +24,8 @@ class ExpenseController < ApplicationController
                 @expenses = @expenses.order("amount desc")
             end
         end
+
+        @users = User.all
     end
 
     def new

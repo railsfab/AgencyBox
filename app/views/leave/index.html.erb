@@ -39,6 +39,21 @@
 
         </div>
     </div>
+    <div id="amount-filter-box" class="small-box">
+        <div class="box-header">
+            User
+        </div>
+        <div class="box-content">
+            <p>
+                <select id="users_list">
+                    <option value>-------</option>
+                    <% @users.each do |user| %>
+                        <option value="<%= user.id %>"><%= user.available_name %></option>
+                    <% end %>
+                </select>
+            </p>
+        </div>
+    </div>
 
 
     <button id="submit-filter" class="btn btn-primary">Filter</button>

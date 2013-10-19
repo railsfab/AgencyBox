@@ -39,6 +39,12 @@ class LeaveController < ApplicationController
                 @leaves = @leaves.order("start_date desc")
             end
         end
+
+        if params.include?(:user)
+            @leaves = @leaves.where(:user_id => params[:user])
+        end
+
+        @users = User.all
     end
 
     def show
