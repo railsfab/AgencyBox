@@ -9,12 +9,14 @@ $("#submit-filter").click ->
     pathname = window.location.pathname
   
   if $("#amount-filter-box input[type='radio']:checked").length > 0
-    pathname += "amount_filter=#{$("#amount-filter-box input[type='radio']:checked").val()}&"
+    amount_filter = $("#amount-filter-box input[type='radio']:checked").val()
+    if amount_filter != "none"
+      pathname += "amount_filter=#{amount_filter}&"
   if $("#status-filter-box input[type='radio']:checked").length > 0
     status = $("#status-filter-box input[type='radio']:checked").val()
     if status != "none"
       pathname += "status=#{status}&"
-  pathname = pathname.replace(/&$/, "")
+  pathname = pathname.replace(/&$/, "").replace(/\?$/, "")
   window.location = pathname
 
 
