@@ -20,6 +20,10 @@ $("#submit-filter").click ->
   window.location = pathname
 
 
+$("#reset-btn").click ->
+  window.location = window.location.pathname
+
+
 $(document).ready ->
   search = location.search.replace(/^\?/, "").split("&")
   search_params = {}
@@ -31,6 +35,3 @@ $(document).ready ->
     $("#amount-filter-box input[type='radio'][value='"+search_params['amount_filter']+"']").prop("checked", true)
   if "status" in search_params_keys
     $("#status-filter-box input[type='radio'][value='"+search_params['status']+"']").prop("checked", true)
-  
-
-  
