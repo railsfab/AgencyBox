@@ -1,11 +1,67 @@
-<button class='btn btn-info btn-lg bottom-flat'>My Leaves</button>
+
+<div class="left-pane">
+<button class='btn btn-info btn-lg bottom-flat' id="filter-main-btn">Filter</button>
+<div class="well filter-box" >
+
+    <div id="amount-filter-box" class="small-box">
+        <div class="box-header">
+            Amount
+        </div>
+        <div class="box-content">
+            <p>
+            <input type="radio" name="amount" id="filter_by_asc" value="asc" /> Asc
+            </p>
+            <p>
+            <input type="radio" name="amount" id="filter_by_desc" value="desc" /> Desc
+            </p>
+        </div>
+    </div>
+    <div id="status-filter-box" class="small-box">
+        <div class="box-header">
+            Status 
+        </div>
+        <div class="box-content">
+            <p>
+            <input type="radio" name="status" id="filter_by_status_pending" value="pending" /> Pending
+            </p>
+            <p>
+            <input type="radio" name="status" id="filter_by_status_rejected" value="rejected" /> Rejected
+            </p>
+            <p>
+            <input type="radio" name="status" id="filter_by_status_approved" value="approved" /> Approved
+            </p>
+            <p>
+            <input type="radio" name="status" id="filter_by_status_none" value="none" /> Nothing
+            </p>
+
+        </div>
+    </div>
+
+
+    <button id="submit-filter" class="btn btn-primary">Filter</button>
+</div>
+</div>
+<div class='right-pane'>
+<button class='btn btn-info btn-lg bottom-flat'>Expenses</button>
 <% @leaves.each do |leave| %>
     <div class='well'>
-        <%= link_to leave.from, leave_show_path(leave) %>
+        <% if current_user.has_role? :admin %>
+        <span class='medium-text'><%= link_to "#{leave.from} by #{leave.user.available_name}", admin_leave_edit_path(leave) %></span>
+        <% else %>
+        <span class='medium-text'><%= link_to "#{leave.from}", leave_show_path(leave) %></span>
+        <% end %>
+        
+        <% if leave.status_display == "Pending" %>
+        <div class="badge badge-warning">Pending</div>
+        <% elsif leave.status_display == "Rejected" %>
+            <div class="badge badge-error">Rejected</div>
+        <% elsif leave.status_display == "Approved" %>
+            <div class="badge badge-success">Approved</div>
+        <% end %>
     </div>
 <% end %>
-<% if @leaves.empty? %>
-    <div class="well">
-        You have not applied any leaves yet.
-    </div>
-<% end %>
+</div>
+
+
+<%= javascript_include_tag "leave_admin", "data-turbolinks-track" => true %>
+

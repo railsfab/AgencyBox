@@ -17,7 +17,11 @@ class LeaveController < ApplicationController
     end
 
     def index
-        @leaves = LeaveApplication.where user: current_user
+        if current_user.has_role? :admin
+            @leaves = LeaveApplication.all
+        else
+            @leaves = LeaveApplication.where user: current_user
+        end
     end
 
     def show

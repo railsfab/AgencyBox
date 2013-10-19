@@ -32,8 +32,8 @@ AgencyBox::Application.routes.draw do
   get "leave/index"
   get "leave/show/:id" => "leave#show", as: "leave_show"
 
-  #leave_admin
-  get "admin/leave/index" => "leave_admin#index", as: "admin_leave_index"
+  get "admin/leave/edit/:id" => "leave_admin#edit", as: "admin_leave_edit"
+  post "admin/leave/modify/:id" => "leave_admin#modify", as: "admin_leave_modify"
 
 
   # The priority is based upon order of creation: first created -> highest priority.
