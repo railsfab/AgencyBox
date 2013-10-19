@@ -25,9 +25,6 @@
                     <li><%= link_to "New Expense", :expense_new %></li>
                     <li><%= link_to "Categories", :expense_category_index %></li>
                     <li><%= link_to "New Category", :expense_category_new %></li>
-                    <% if current_user.has_role? :admin %>
-                        <li><%= link_to "Admin - All Expenses", :expense_admin_index %></li>
-                    <% end %>
                 </ul>
            </li>
             <% end %>

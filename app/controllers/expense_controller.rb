@@ -2,7 +2,28 @@ class ExpenseController < ApplicationController
     before_filter :authenticate_user!
 
     def index
-        @expenses = Expense.where user: current_user
+        if current_user.has_role? :admin
+            @expenses = Expense.all
+        else
+            @expenses = Expense.where user: current_user
+        end
+        if params.include?("status")
+            if params['status'] == "pending"
+                @expenses = @expenses.where({ :status => false, :rejected => false })
+            elsif params["status"] == "approved"
+                @expenses = @expenses.where({ :status => true, :rejected => false })
+            elsif params["status"] == "rejected"
+                @expenses = @expenses.where({ :status => false, :rejected => true })
+            end
+        end
+
+        if params.include?(:amount_filter)
+            if params[:amount_filter] == "asc"
+                @expenses = @expenses.order("amount ASC")
+            elsif params[:amount_filter] == "desc"
+                @expenses = @expenses.order("amount desc")
+            end
+        end
     end
 
     def new
