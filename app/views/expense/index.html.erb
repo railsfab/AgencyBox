@@ -14,6 +14,9 @@
             <p>
             <input type="radio" name="amount" id="filter_by_desc" value="desc" /> Desc
             </p>
+            <p>
+            <input type="radio" name="amount" value="none" /> Reset
+            </p>
         </div>
     </div>
     <div id="status-filter-box" class="small-box">
@@ -31,14 +34,32 @@
             <input type="radio" name="status" id="filter_by_status_approved" value="approved" /> Approved
             </p>
             <p>
-            <input type="radio" name="status" id="filter_by_status_none" value="none" /> Nothing
+            <input type="radio" name="status" id="filter_by_status_none" value="none" /> Reset
             </p>
 
         </div>
     </div>
+    <% if current_user.has_role? :admin %>
+    <div id="user-filter-box" class="small-box">
+        <div class="box-header">
+            User
+        </div>
+        <div class="box-content">
+            <p>
+                <select id="users_list">
+                    <option value>-------</option>
+                    <% @users.each do |user| %>
+                        <option value="<%= user.id %>"><%= user.available_name %></option>
+                    <% end %>
+                </select>
+            </p>
+        </div>
+    </div>
+    <% end %>
 
 
     <button id="submit-filter" class="btn btn-primary">Filter</button>
+    <button id="reset-btn" class="btn btn-primary">Reset</button>
 </div>
 </div>
 <div class='right-pane'>
@@ -63,5 +84,5 @@
 </div>
 
 
-<%= javascript_include_tag "expense_admin", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "expense", "data-turbolinks-track" => true %>
 

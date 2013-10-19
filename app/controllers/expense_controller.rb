@@ -25,6 +25,12 @@ class ExpenseController < ApplicationController
             end
         end
 
+        if params.include?(:user)
+            if current_user.has_role? :admin
+                @expenses = @expenses.where(:user_id => params[:user])
+            end
+        end
+
         @users = User.all
     end
 
