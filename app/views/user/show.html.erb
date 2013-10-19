@@ -8,8 +8,4 @@
         <dd><%= link_to "Leaves", leave_index_path(:user => @user.id) %>, 
         <%= link_to "Expenses", expense_index_path(:user => @user.id) %></dd>
     </dl>
-
-    <% if current_user.has_role? :admin %>
-        <%= link_to :Edit, expense_category_admin_edit_path(@category) %>
-    <% end %>
 </div>
