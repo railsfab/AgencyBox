@@ -35,6 +35,9 @@ AgencyBox::Application.routes.draw do
   get "admin/leave/edit/:id" => "leave_admin#edit", as: "admin_leave_edit"
   post "admin/leave/modify/:id" => "leave_admin#modify", as: "admin_leave_modify"
 
+  get "admin/user/index" => "user_admin#index", as: "admin_user_index"
+  get "user/:id" => "user#show", as: "user_show"
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

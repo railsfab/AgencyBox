@@ -1,0 +1,6 @@
+<button class='btn btn-info btn-lg bottom-flat'>Users</button>
+<% @users.each do |user| %>
+    <div class='well'>
+        <%= link_to user.available_name, user_show_path(user) %>
+    </div>
+<% end %>
