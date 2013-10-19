@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20131009234433) do
 
   create_table "holidays", force: true do |t|
     t.string   "name"
-    t.date     "on"
+    t.date     "_on"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
