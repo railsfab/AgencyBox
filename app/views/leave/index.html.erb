@@ -39,7 +39,8 @@
 
         </div>
     </div>
-    <div id="amount-filter-box" class="small-box">
+    <% if current_user.has_role? :admin %>
+    <div id="user-filter-box" class="small-box">
         <div class="box-header">
             User
         </div>
@@ -54,6 +55,7 @@
             </p>
         </div>
     </div>
+    <% end %>
 
 
     <button id="submit-filter" class="btn btn-primary">Filter</button>

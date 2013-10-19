@@ -4,6 +4,8 @@
         <dt>Name: </dt>
         <dd><%= @user.available_name %></dd>
 
+        <dt>Leaves: </dt>
+        <dd><%= link_to "His Leaves", leave_index_path(:user => @user.id) %></dd>
     </dl>
 
     <% if current_user.has_role? :admin %>

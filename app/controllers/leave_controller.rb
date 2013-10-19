@@ -41,7 +41,9 @@ class LeaveController < ApplicationController
         end
 
         if params.include?(:user)
-            @leaves = @leaves.where(:user_id => params[:user])
+            if current_user.has_role? :admin
+                @leaves = @leaves.where(:user_id => params[:user])
+            end
         end
 
         @users = User.all
