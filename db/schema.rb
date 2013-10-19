@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131007061947) do
+ActiveRecord::Schema.define(version: 20131009234433) do
 
   create_table "expense_categories", force: true do |t|
     t.string   "name"
@@ -28,9 +28,43 @@ ActiveRecord::Schema.define(version: 20131007061947) do
     t.integer  "user_id"
     t.integer  "category_id"
     t.decimal  "amount"
+    t.boolean  "status",      default: false
+    t.boolean  "rejected",    default: false
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "holidays", force: true do |t|
+    t.string   "name"
+    t.date     "on"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "leave_applications", force: true do |t|
+    t.text     "reason"
+    t.date     "from"
+    t.date     "to"
+    t.integer  "num_of_days"
+    t.integer  "user_id"
+    t.integer  "category_id"
     t.boolean  "status"
     t.boolean  "rejected"
-    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "leave_categories", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "leave_profiles", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "used_leaves"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
