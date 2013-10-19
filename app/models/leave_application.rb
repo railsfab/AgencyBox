@@ -7,6 +7,8 @@ class LeaveApplication < ActiveRecord::Base
     validates :start_date, presence: true
     validates :end_date, presence: true
 
+    before_save :update_num_of_days
+
     def categories
         LeaveCategory.pluck(:name, :id)
     end
@@ -23,5 +25,10 @@ class LeaveApplication < ActiveRecord::Base
         status
     end
 
-
+    def update_num_of_days
+        weekend_holidays = ENV['AGENCY_BOX_WEEKEND_HOLIDAYS'].split("-")
+        leaves = (self.start_date..self.end_date).select { |date| !weekend_holidays.include? date.wday }
+        holidays_in_leaves = Holiday.where({'_on' => leaves}).pluck(:_on)
+        self.num_of_days = (leaves-holidays_in_leaves).count
+    end
 end
