@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :confirmable
 
   has_many :project_members
-  has_many :projects, through: :project_members
+  has_many :projects, through: :project_members, uniq: true
 
 
   include RoleModel

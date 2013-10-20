@@ -1,0 +1,19 @@
+// Place all the styles related to the ProjectMember controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.to-box { float: left; }
+.add-box { width: 700px; text-align: center; margin-left: 24%; }
+.from-box { float: left; }
+#arrow-box { float: left; width: 100px; }
+
+
+.box-content { width: 185px; padding: 0px; height: 400px; overflow-y: scroll;}
+.user { border-bottom: 1px solid rgb(215, 216, 215); padding-bottom: 10px; 
+    padding-top: 10px; cursor: pointer; }
+.user.selected { background-color: rgb(131, 103, 51); color: white; }
+.user.old-members { background-color: rgb(233, 72, 7); color: white;}
+
+#right-arrow { width: 50px; margin-top: 125px; }
+#left-arrow { width: 50px; margin-top: 10px; }
+#submit-btn { margin-left: -230px; }

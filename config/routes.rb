@@ -54,6 +54,11 @@ AgencyBox::Application.routes.draw do
   get "project/:slug" => "project#show", as: "project_show"
   get "projects" => "project#index", as: "project_index"
 
+  get "project/:slug/member/add" => "project_member#new", as: "project_member_new"
+  post "project/:slug/member/add" => "project_member#create", as: "project_member_add"
+  
+
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
