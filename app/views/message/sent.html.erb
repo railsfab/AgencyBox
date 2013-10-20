@@ -20,6 +20,10 @@
     </div>
     <% end %>
 <% end %>
+<% if @messages.empty? %>
+    <div class="well"> Your outbox is empty! </div>
+<% end %>
+
 
 
 

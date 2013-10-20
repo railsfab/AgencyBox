@@ -20,5 +20,8 @@
     </div>
     <% end %>
 <% end %>
+<% if @messages.empty? %>
+    <div class="well"> Your inbox is empty! </div>
+<% end %>
 
 <%= javascript_include_tag "message", "data-turbolinks-track" => true %>
