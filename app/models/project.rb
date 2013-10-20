@@ -1,6 +1,9 @@
 class Project < ActiveRecord::Base
     belongs_to :created_by, class_name: :User, foreign_key: :created_by_id
 
+    has_many :project_members
+    has_many :members, class_name: :User, through: :project_members
+
     #validations
     validates :name, presence: true, length: { :minimum => 5 }
     validates :description, presence: true, length: { :minimum => 5 }

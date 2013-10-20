@@ -5,6 +5,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
 
+  has_many :project_members
+  has_many :projects, through: :project_members
+
+
   include RoleModel
 
   roles :admin, :manager
