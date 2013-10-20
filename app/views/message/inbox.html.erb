@@ -1,0 +1,24 @@
+<button class='btn btn-info btn-lg bottom-flat'>Inbox</button>
+<% @messages.each do |message| %>
+
+    <%= link_to message_show_path(message) do  %>
+    <div  class="well message">
+        <div class="contact-name">
+            <%= message.sender.available_name %>
+        </div>
+        <div class="subject">
+            <%= message.subject %>
+        </div>
+        <div class="created-at">
+            <% if message.created_at.to_date == Time.now.to_date %>
+                <%= message.created_at.strftime("%I.%M %p") %>
+            <% else %>
+                <%= message.created_at.strftime("%b %d") %>
+            <% end %>
+        </div>
+    <div class="clearfix"></div>
+    </div>
+    <% end %>
+<% end %>
+
+<%= javascript_include_tag "message", "data-turbolinks-track" => true %>

@@ -38,6 +38,16 @@ AgencyBox::Application.routes.draw do
   get "user/index" => "user#index", as: "user_index"
   get "user/:id" => "user#show", as: "user_show"
 
+  get "message/:id/new" => "message#new", as: :message_new
+  post "message/:id/create" => "message#create", as: :message_create
+  get "message/inbox" => "message#inbox", as: "message_inbox"
+  get "message/sent" => "message#sent", as: "message_sent"
+
+  get "message/:id/reply" => "message#new_reply", as: :message_reply_new
+  post "message/:id/reply" => "message#send_reply", as: :message_send_reply
+  get "message/:id/" => "message#show", as: :message_show
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
