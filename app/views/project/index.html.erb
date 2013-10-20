@@ -1,0 +1,6 @@
+<button class='btn btn-info btn-lg bottom-flat'>Projects</button>
+<% @projects.each do |project| %>
+    <div class='well'>
+        <%= link_to project.name, project_show_path(project.slug) %>
+    </div>
+<% end %>

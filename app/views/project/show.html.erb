@@ -1,0 +1,14 @@
+<button class='btn btn-info btn-lg bottom-flat'><%= @project.name %></button>
+<div class='well'>
+    <dl class="dl-horizontal">
+        <dt>Name: </dt>
+        <dd><%= @project.name %></dd>
+
+        <dt>Description: </dt>
+        <dd><%= @project.description %></dd>
+    </dl>
+
+    <% if current_user.has_role? :admin %>
+        <%= link_to :Edit, project_edit_path(@project.slug) %>
+    <% end %>
+</div>

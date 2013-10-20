@@ -47,6 +47,13 @@ AgencyBox::Application.routes.draw do
   post "message/:id/reply" => "message#send_reply", as: :message_send_reply
   get "message/:id/" => "message#show", as: :message_show
 
+  get "project/new" => "project#new", as: "project_new"
+  post "project/create" => "project#create", as: "project_create"
+  get "project/edit/:slug" => "project#edit", as: "project_edit"
+  patch "project/modify/:slug" => "project#modify", as: "project_modify"
+  get "project/:slug" => "project#show", as: "project_show"
+  get "projects" => "project#index", as: "project_index"
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

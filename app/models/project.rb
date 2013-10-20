@@ -7,7 +7,7 @@ class Project < ActiveRecord::Base
     validate :create_and_validate_slug
     validates :slug, :uniqueness => { 
         message: ": Project with this name already exists, 
-        please choose another category" }
+        please choose another name" }
 
     def create_and_validate_slug
         self.slug = self.name.parameterize
