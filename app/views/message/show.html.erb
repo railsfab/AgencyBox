@@ -8,8 +8,11 @@
     </button>
 <div class="well message">
     <dl class="dl-horizontal">
-        <dt>From: </dt>
-        <dd><%= @message.sender.available_name %></dd>
+        <dt>Started by: </dt>
+        <dd><%= link_to @message.sender.available_name, user_show_path(@message.sender) %></dd>
+
+        <dt>To: </dt>
+        <dd><%= link_to @message.recipient.available_name, user_show_path(@message.recipient) %></dd>
 
         <dt>Subject: </dt>
         <dd><%= @message.subject %></dd>
