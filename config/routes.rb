@@ -57,6 +57,15 @@ AgencyBox::Application.routes.draw do
   get "project/:slug/member/add" => "project_member#new", as: "project_member_new"
   post "project/:slug/member/add" => "project_member#create", as: "project_member_add"
   
+  get "project/:project_slug/ticket/new" => "ticket#new", as: :ticket_new
+  get "tickets/" => "ticket#index"
+  get "project/:project_slug/tickets/" => "ticket#tickets", as: :project_tickets
+  get "project/:project_slug/ticket/:id" => "ticket#show", as: :ticket_show
+  get "project/:project_slug/ticket/:id/edit" => "ticket#edit", as: :ticket_edit
+  post "project/:project_id/ticket/create" => "ticket#create", as: :ticket_create
+  patch "project/:project_slug/ticket/:id/modify" => "ticket#modify", as: :ticket_modify
+
+  post "ticket/:ticket_id/ticket_comment/create" => "ticket_comment#create", as: :ticketcomment_create
 
 
 

@@ -4,6 +4,8 @@ class Project < ActiveRecord::Base
     has_many :project_members
     has_many :members, class_name: :User, through: :project_members, uniq: true
 
+    has_many :tickets
+
     #validations
     validates :name, presence: true, length: { :minimum => 5 }
     validates :description, presence: true, length: { :minimum => 5 }
@@ -23,6 +25,16 @@ class Project < ActiveRecord::Base
             end
         end
     end
+
+    def get_members
+        res = []
+        self.members.each do |member|
+            res << [member.available_name, member.id]
+        end
+        return res
+    end
+
+
 
 
 end

@@ -1,0 +1,25 @@
+<div class='well'>
+    <% if @ticket.errors.any? %>
+        <p class='alert alert-danger'>Errors</p>
+        <% @ticket.errors.full_messages.each do |e| %>
+            <p class='text-danger'> <%= e %></p>
+        <% end %>
+    <% end %>
+
+    <%= form_for @ticket, url: ticket_create_path(@project) do |f| %>
+        <div>
+        <%= f.text_field :name, class: 'form-control', placeholder: 'Name' %>
+        </div>
+        <div>
+        <%= f.text_area :description, size: "40x12", class: 'form-control', placeholder: "Content" %>
+        <br />
+        </div>
+        <div>
+        <%= f.select :assigned_to_id, AssignedTo: @project.get_members %>
+        </div>
+        <div>
+        <br />
+        <%= f.submit "Create", class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+</div>

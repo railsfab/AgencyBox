@@ -1,0 +1,45 @@
+<button class='btn btn-info btn-lg bottom-flat'>Ticket</button>
+<div class='well'>
+    <%= link_to :Edit, ticket_edit_path(project_slug: params[:project_slug], id: params[:id]), html_options= {class: 'btn btn-primary'} %>
+    <div class='ticket-name'>
+        <%= @ticket.name %>
+    </div>
+    <div class='ticket-desc'>
+        <%= @ticket.description %>
+    </div>
+    <dl class='dl-horizontal'>
+    <dt>Reported By</dt>
+    <dd><%= @ticket.reported_by.available_name %></dd>
+
+    <dt>Assigned To:</dt>
+    <dd><%= @ticket.assigned_to.available_name%></dd>
+
+    <dt>Status</dt>
+    <dd><%= @ticket.status %></dd>
+
+    </dl>
+</div>
+<button class='btn btn-info btn-lg bottom-flat'>New Comment</button>
+
+    <div class='well'>
+    <% if @ticket_comment.errors.any? %>
+        <p class='alert alert-danger'>Errors</p>
+        <% @ticket_comment.errors.full_messages.each do |e| %>
+            <p class='text-danger'> <%= e %></p>
+        <% end %>
+    <% end %>
+        <%= form_for :@ticket_comment, url: ticketcomment_create_path(ticket_id: @ticket.id) do |f| %>
+            <p>
+            <%= f.text_field :content, class: 'form-control', placeholder: 'Content' %>
+            </p>
+            <%= f.submit "Create", class: 'btn btn-primary' %>
+        <% end %>
+    </div>
+
+<button class='btn btn-info btn-lg bottom-flat'>Comments</button>
+    <% @ticket.ticket_comments.each do |comment| %>
+        <div class='well comment'>
+            <%= comment.content.html_safe %> by <%= comment.created_by.available_name %> at <%= comment.created_at %>.
+        </div>
+    <% end %>
+

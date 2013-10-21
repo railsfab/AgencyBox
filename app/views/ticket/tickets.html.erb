@@ -1,0 +1,30 @@
+<button class='btn btn-info btn-lg bottom-flat'>My Tickets</button>
+
+<div id='tickets' class='well'>
+    <table class='table table-bordered table-striped'>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        
+    <% @tickets.each do |ticket| %>
+        <tr>
+            <td>
+                <%= link_to ticket.name, ticket_show_path({:project_id => ticket.project.slug , :id => ticket.id }) %>
+            </td>
+            <td>
+                <%= ticket.status %>
+            </td>
+        </tr>
+    <% end %>
+    </tbody>
+    </table>
+
+    <% if @tickets.length == 0 %>
+        No tickets.
+    <% end %>
+</div>
