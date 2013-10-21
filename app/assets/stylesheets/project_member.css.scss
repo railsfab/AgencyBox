@@ -8,7 +8,7 @@
 #arrow-box { float: left; width: 100px; }
 
 
-.box-content { width: 185px; padding: 0px; height: 400px; overflow-y: scroll;}
+.add-box .box-content { width: 185px; padding: 0px; height: 400px; overflow-y: scroll;}
 .user { border-bottom: 1px solid rgb(215, 216, 215); padding-bottom: 10px; 
     padding-top: 10px; cursor: pointer; }
 .user.selected { background-color: rgb(131, 103, 51); color: white; }
