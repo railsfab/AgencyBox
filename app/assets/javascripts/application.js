@@ -16,7 +16,7 @@
 //= require_tree .
 
 $(document).ready(function(){
-    //simple_crumbs();
+    simple_crumbs();
 });
 
 function simple_crumbs(){
@@ -24,7 +24,16 @@ function simple_crumbs(){
         crumbs = "<a href='/'>Home</a> &raquo; ";
 
     for(var i=1; i < pathname_arr.length; i++){
-        crumbs += "  "+capitaliseFirstLetter(pathname_arr[i]) + " &raquo;"
+        if(i === 1){
+            if(controller_name === pathname_arr[1]){
+                pathname_arr[1] = "<a href='"+controller_index+"'>"+
+                                  capitaliseFirstLetter(controller_name)+"</a>";
+            }
+        }else{
+            pathname_arr[i] = capitaliseFirstLetter(pathname_arr[i]);
+        }
+        console.log(pathname_arr[i]);
+        crumbs += "  "+pathname_arr[i] + " &raquo;"
     }
     crumbs = crumbs.replace(/&raquo;$/, '');
 

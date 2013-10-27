@@ -2,10 +2,9 @@
 <html>
 <head>
   <title>AgencyBox</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= stylesheet_link_tag    "bootstrap", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "dropdown", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= stylesheet_link_tag    "bootstrap", media: "all" %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -54,10 +53,28 @@
        </ul>
   </div>
   </nav>
-
+  <% if false %>
+      <!-- commenting for now -->
+  <div class'well'>
+    <% @crumbs.each do |crumb| %>
+        <a href="<%= crumb[1] %>"><%= crumb[0] %></a> &raquo;  
+    <% end %>
+    <%= @ending_crumb %>
+  </div>
+  <!-- end comment -->
+  <% end %>
+  <div id="simple-crumbs">
+  </div>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 <%= yield %>
+<script type="text/javascript">
+    var controller_name="<%= params[:controller] %>".trim(),
+        controller_index = "<%= url_for({:controller => params[:controller], :action => :index}) %>";
+</script>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "dropdown" %>
+ <%= yield :extra_js %>
 
 </div>
 </body>

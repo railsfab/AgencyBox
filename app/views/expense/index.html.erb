@@ -84,5 +84,7 @@
 </div>
 
 
-<%= javascript_include_tag "expense", "data-turbolinks-track" => true %>
+<% content_for :extra_js do %>
+<%= javascript_include_tag "expense" %>
+<% end %>
 
