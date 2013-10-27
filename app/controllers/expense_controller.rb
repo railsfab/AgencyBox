@@ -1,5 +1,7 @@
 class ExpenseController < ApplicationController
-    before_filter :authenticate_user!
+    before_filter :authenticate_user!, :add_to_crumbs
+
+
 
     def index
         if current_user.has_role? :admin
@@ -54,6 +56,14 @@ class ExpenseController < ApplicationController
     end
 
     private
+
+    def add_to_crumbs
+        '''
+        Not used now, but can be used when exact crumbs are required.
+        Currently using simply crumbs using javascript
+        '''
+        @crumbs.append ["Expenses", expense_index_path() ]
+    end
 
     def create_expense_params
         params.require(:expense).permit(:amount, :category_id, :description)

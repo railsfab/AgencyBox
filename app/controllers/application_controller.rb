@@ -20,4 +20,12 @@ class ApplicationController < ActionController::Base
             end
         end
     end
+
+    def define_crumbs
+        '''
+        Not used now, but used when exact crumbs are required.
+        Currently using simple crumbs.
+        '''
+        @crumbs = [[ "Home", root_path() ]]
+    end
 end
