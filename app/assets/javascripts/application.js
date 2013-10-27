@@ -14,3 +14,25 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+    //simple_crumbs();
+});
+
+function simple_crumbs(){
+    var pathname_arr = window.location.pathname.split("/"),
+        crumbs = "<a href='/'>Home</a> &raquo; ";
+
+    for(var i=1; i < pathname_arr.length; i++){
+        crumbs += "  "+capitaliseFirstLetter(pathname_arr[i]) + " &raquo;"
+    }
+    crumbs = crumbs.replace(/&raquo;$/, '');
+
+    $("#simple-crumbs").html(crumbs);
+
+}
+
+function capitaliseFirstLetter(string)
+{
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
