@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20131020202737) do
     t.string   "subject"
     t.boolean  "is_conversation"
     t.boolean  "has_conversations", default: false
+    t.boolean  "unread",            default: true
     t.integer  "conversation_id"
     t.datetime "created_at"
     t.datetime "updated_at"

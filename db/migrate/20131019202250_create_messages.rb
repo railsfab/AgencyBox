@@ -7,6 +7,7 @@ class CreateMessages < ActiveRecord::Migration
       t.string :subject
       t.boolean :is_conversation
       t.boolean :has_conversations, default: false
+      t.boolean :unread, default: true
       t.integer :conversation_id
 
       t.timestamps
