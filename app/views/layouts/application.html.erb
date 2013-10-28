@@ -70,7 +70,7 @@
 <%= yield %>
 <script type="text/javascript">
     var controller_name="<%= params[:controller] %>".trim(),
-        controller_index = "<%= url_for({:controller => params[:controller], :action => :index}) %>";
+        controller_index = "<%= silent_url_for({:controller => params[:controller], :action => :index}) %>";
 </script>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "dropdown" %>
