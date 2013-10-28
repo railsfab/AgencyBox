@@ -46,6 +46,9 @@ class MessageController < ApplicationController
             else
                 @message.recipient = conversation.sender
             end
+            conversation.unread_by_recipient = true
+            conversation.unread_by_sender = true
+            conversation.save
             @message.is_conversation = false
             @message.save
             redirect_to message_show_path(conversation)
@@ -56,13 +59,9 @@ class MessageController < ApplicationController
 
     def show
         @message = Message.find params[:id]
-        @conversations = Message.where conversation: @message
-        @conversations.each do |conversation|
-            conversation.unread = false
-            conversation.save
-        end
-        @message.unread = false
+        @message.modify_unread current_user
         @message.save
+        @conversations = Message.where conversation: @message
         @reply = Message.new
     end
 

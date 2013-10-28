@@ -6,5 +6,8 @@
 .message .subject { width: 690px; float: left;  }
 .message .created-at { width: 100px; float: right; }
 .message .unread-count { width: 75px; float: left; }
-
-
+.message {
+border-bottom: 1px solid rgb(231, 230, 230);
+padding: 10px;
+}
+.message.unread { background-color: white; color: black; }

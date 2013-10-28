@@ -1,16 +1,18 @@
 <button class='btn btn-info btn-lg bottom-flat'>Inbox</button>
+<div class="well">
 <% @messages.each do |message| %>
 
     <%= link_to message_show_path(message) do  %>
-    <div  class="well well-sm message">
+        <div  class="message <%= unread_check(message, current_user) %>">
         <div class="contact-name">
             <%= message.sender.available_name %>
         </div>
+
         <div class="subject">
+        <% if message.is_unread?(current_user) %> 
+            <span class="unread-label">   (new)</span>
+        <% end %>
             <%= message.short_subject %>
-        </div>
-        <div class="unread-count">
-            <%= message.unread_count %> unread
         </div>
         <div class="created-at">
             <% if message.created_at.to_date == Time.now.to_date %>
@@ -26,5 +28,6 @@
 <% if @messages.empty? %>
     <div class="well"> Your inbox is empty! </div>
 <% end %>
+</div>
 
 <%= javascript_include_tag "message", "data-turbolinks-track" => true %>
