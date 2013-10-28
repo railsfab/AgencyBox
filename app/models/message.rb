@@ -2,6 +2,7 @@ class Message < ActiveRecord::Base
     belongs_to :sender, class_name: :User, foreign_key: :sender_id
     belongs_to :recipient, class_name: :User, foreign_key: :recipient_id
     belongs_to :conversation, class_name: Message, foreign_key: :conversation_id
+    has_many :messages, class_name: Message, foreign_key: :conversation_id
     
     validates :subject, presence: true
     validates :content, presence: true
@@ -17,6 +18,23 @@ class Message < ActiveRecord::Base
                     conversation.save
                 end
             end
+        end
+    end
+
+    def unread_count
+        unread = self.messages.where(unread: true).count
+        if self.unread
+            unread += 1
+        end
+        unread
+    end
+
+    def short_subject
+        subject = self.subject
+        if subject.length > 50
+            self.subject.slice(0, 50) + " ..."
+        else
+            self.subject
         end
     end
 end
