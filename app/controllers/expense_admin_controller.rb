@@ -1,4 +1,6 @@
 class ExpenseAdminController < ApplicationController
+    before_filter :authenticate_user!
+
     def edit
         @expense = Expense.find params[:id]
     end

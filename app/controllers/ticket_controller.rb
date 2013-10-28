@@ -1,6 +1,8 @@
 class TicketController < ApplicationController
     #before_filter :authenticate_user!
     #before_filter :admin_employee_auth, only: [:new, :edit, :create, :modify, :tickets]
+    before_filter :authenticate_user!
+
 
     def index
         @tickets = Ticket.where(assigned_to: current_user)

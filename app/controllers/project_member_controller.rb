@@ -1,4 +1,6 @@
 class ProjectMemberController < ApplicationController
+    before_filter :authenticate_user!
+
 
     def new
         @project = Project.find_by_slug params[:slug]

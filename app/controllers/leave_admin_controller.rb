@@ -1,4 +1,5 @@
 class LeaveAdminController < ApplicationController
+    before_filter :authenticate_user!
     
     def edit
         @leave = LeaveApplication.find params[:id]

@@ -1,4 +1,6 @@
 class ProjectController < ApplicationController
+    before_filter :authenticate_user!
+
     
     def new
         @project = Project.new
