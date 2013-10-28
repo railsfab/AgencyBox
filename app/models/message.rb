@@ -5,4 +5,18 @@ class Message < ActiveRecord::Base
     
     validates :subject, presence: true
     validates :content, presence: true
+
+    before_save :update_has_conversations
+
+    def update_has_conversations
+        if not self.is_conversation
+            conversation = self.conversation
+            if conversation.recipient == self.sender
+                if not conversation.has_conversations
+                    conversation.has_conversations = true
+                    conversation.save
+                end
+            end
+        end
+    end
 end
