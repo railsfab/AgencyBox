@@ -21,8 +21,9 @@ class MessageController < ApplicationController
     end
 
     def inbox
-        @messages = Message.where(
-            :recipient => current_user, :is_conversation => true).order("created_at DESC")
+        @messages = Message.where(:is_conversation => true).where(
+            "recipient_id = ? or (sender_id = ? and has_conversations = ?)",
+            current_user.id, current_user.id, true).order("created_at DESC")
     end
 
     def sent
