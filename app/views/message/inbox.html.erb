@@ -2,12 +2,15 @@
 <% @messages.each do |message| %>
 
     <%= link_to message_show_path(message) do  %>
-    <div  class="well message">
+    <div  class="well well-sm message">
         <div class="contact-name">
             <%= message.sender.available_name %>
         </div>
         <div class="subject">
-            <%= message.subject %>
+            <%= message.short_subject %>
+        </div>
+        <div class="unread-count">
+            <%= message.unread_count %> unread
         </div>
         <div class="created-at">
             <% if message.created_at.to_date == Time.now.to_date %>

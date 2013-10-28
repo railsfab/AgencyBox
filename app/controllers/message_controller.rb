@@ -57,6 +57,12 @@ class MessageController < ApplicationController
     def show
         @message = Message.find params[:id]
         @conversations = Message.where conversation: @message
+        @conversations.each do |conversation|
+            conversation.unread = false
+            conversation.save
+        end
+        @message.unread = false
+        @message.save
         @reply = Message.new
     end
 
