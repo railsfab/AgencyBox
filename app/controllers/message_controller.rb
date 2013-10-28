@@ -13,6 +13,7 @@ class MessageController < ApplicationController
             @message.sender = current_user
             @message.recipient = @user
             @message.is_conversation = true
+            @message.unread_by_sender = false
             @message.save
             redirect_to user_show_path(@user)
         else

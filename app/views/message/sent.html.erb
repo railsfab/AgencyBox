@@ -1,13 +1,18 @@
 <button class='btn btn-info btn-lg bottom-flat'>Sent Messages</button>
+<div class="well">
 <% @messages.each do |message| %>
 
     <%= link_to message_show_path(message) do  %>
-    <div class="well message">
+        <div class="message <%= unread_check(message, current_user) %>">
         <div class="contact-name">
             <%= message.recipient.available_name %>
+            <% if message.messages.count > 0 %> (<%= message.messages.count %>) <% end %>
         </div>
         <div class="subject">
-            <%= message.subject %>
+        <% if message.is_unread?(current_user) %> 
+            <span class="unread-label">   (new)</span>
+        <% end %>
+            <%= message.short_subject %>
         </div>
         <div class="created-at">
             <% if message.created_at.to_date == Time.now.to_date %>
@@ -23,6 +28,7 @@
 <% if @messages.empty? %>
     <div class="well"> Your outbox is empty! </div>
 <% end %>
+</div>
 
 
 
