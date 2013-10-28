@@ -6,6 +6,7 @@
         <div  class="message <%= unread_check(message, current_user) %>">
         <div class="contact-name">
             <%= message.sender.available_name %>
+            <% if message.messages.count > 0 %> (<%= message.messages.count %>) <% end %>
         </div>
 
         <div class="subject">
