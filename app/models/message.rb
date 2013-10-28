@@ -21,13 +21,13 @@ class Message < ActiveRecord::Base
         end
     end
 
-    def unread_count
-        unread = self.messages.where(unread: true).count
-        if self.unread
-            unread += 1
-        end
-        unread
-    end
+    #def unread_count
+        #unread = self.messages.where(unread: true).count
+        #if self.unread
+            #unread += 1
+        #end
+        #unread
+    #end
 
     def short_subject
         subject = self.subject
@@ -35,6 +35,22 @@ class Message < ActiveRecord::Base
             self.subject.slice(0, 50) + " ..."
         else
             self.subject
+        end
+    end
+
+    def is_unread?(current_user)
+        if self.recipient == current_user
+            self.unread_by_recipient
+        elsif self.sender == current_user
+            self.unread_by_sender
+        end
+    end
+
+    def modify_unread(current_user)
+        if self.recipient == current_user
+            self.unread_by_recipient = false
+        elsif self.sender == current_user
+            self.unread_by_sender = false
         end
     end
 end
