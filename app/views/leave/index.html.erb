@@ -64,8 +64,9 @@
 </div>
 <div class='right-pane'>
 <button class='btn btn-info btn-lg bottom-flat'>Leaves</button>
+    <div class='well' id="leaves">
 <% @leaves.each do |leave| %>
-    <div class='well'>
+    <div class='leave'>
         <% if current_user.has_role? :admin %>
             <span class='medium-text'><%= link_to "#{leave.start_date } by #{leave.user.available_name}", admin_leave_edit_path(leave), title: "Click to edit" %></span>
         <% else %>
@@ -81,6 +82,7 @@
         <% end %>
     </div>
 <% end %>
+</div>
 </div>
 
 
