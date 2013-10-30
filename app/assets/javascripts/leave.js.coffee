@@ -40,3 +40,6 @@ $(document).ready ->
     $("#status-filter-box input[type='radio'][value='"+search_params['status']+"']").prop("checked", true)
   if "user" in search_params_keys
     $("#users_list").val search_params["user"]
+
+  $("#leave_application_start_date").datepicker()
+  $("#leave_application_end_date").datepicker()
