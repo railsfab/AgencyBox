@@ -8,4 +8,26 @@ class UserController < ApplicationController
     def index
         @users = User.all
     end
+
+    def edit
+        @user = current_user
+    end
+
+    def modify
+        @user = current_user
+        @user.assign_attributes modify_user_params
+        if @user.valid?
+            @user.save
+            redirect_to user_show_path(@user)
+        else
+            render :edit
+        end
+        
+    end
+
+    private
+
+    def modify_user_params
+        params.require(:user).permit(:first_name, :last_name, :avatar)
+    end
 end

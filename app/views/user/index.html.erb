@@ -1,6 +1,12 @@
 <button class='btn btn-info btn-lg bottom-flat'>Users</button>
-<% @users.each do |user| %>
     <div class='well'>
-        <%= link_to user.available_name, user_show_path(user) %>
+<% @users.each do |user| %>
+
+    <div class="user-block">
+        <%= image_tag user.avatar.url(:medium), :class => "user-thumb" %>
+        <br />
+        <div class="user-name"><%= link_to user.available_name, user_show_path(user) %></div>
+
     </div>
 <% end %>
+

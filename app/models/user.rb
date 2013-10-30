@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
   has_many :project_members
   has_many :projects, through: :project_members, uniq: true
 
+  attr_accessor :avatar
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" },
+      :default_url => "/images/:style/missing.png"
+
 
   include RoleModel
 
