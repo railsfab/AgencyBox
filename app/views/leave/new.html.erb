@@ -13,7 +13,8 @@
     <br />
     <%= f.text_area :reason, size: "60x12", class: 'form-control', placeholder: 'Reason'   %>
     <br />
-    <%= f.select :category_id, Categories: @leave.categories %>
+    <%= f.select :category_id, {Categories: @leave.categories}, {}, {class: 'form-control'} %>
+    <br />
     <%= f.submit "Create", class: "btn btn-primary"%>
 
 <% end %>
