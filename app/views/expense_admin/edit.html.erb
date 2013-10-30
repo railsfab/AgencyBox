@@ -1,26 +1,29 @@
-<div class='well'>
+<button class='btn btn-info btn-lg bottom-flat'>Expense Edit</button>
+<div class='well expense-edit'>
     <dl class='dl-horizontal'>
         <dt>Amount:</dt>
         <dd><%= @expense.amount %></dd>
 
         <dt>User:</dt>
-        <dd><%= @expense.user.available_name %></dd>
+        <dd><%= link_to @expense.user.available_name, user_show_path(@expense.user) %></dd>
 
         <dt>Status:</dt>
         <dd><%= @expense.status_display %></dd>
 
         <dt>Modify Status:</dl>
-        <dd>
+        <dd></dd>
+    </dl>
+    
+        <div class="expense-edit-form-div">
         <form action='<%= expense_admin_modify_path(@expense) %>' method='post'>
             <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>' />
-                <select name='expense_status'>
+                <select name='expense_status' class="form-control">
                     <option value='Pending'>Pending</option>
                     <option value='Approved'>Approve</option>
                     <option value='Rejected'>Reject</option>
                 </select>
-                <input type='submit' class='btn btn-lg btn-primary' value='Edit' />
+                <input type='submit' class='btn  btn-primary' value='Edit' />
             </form>
-        </dd>
-    </dl>
+        </div>
 
 </div>
