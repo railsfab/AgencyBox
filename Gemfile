@@ -44,3 +44,4 @@ gem 'debugger', group: [:development, :test]
 gem 'devise'
 gem 'cancan'
 gem 'role_model'
+gem "paperclip", "~> 3.0"
