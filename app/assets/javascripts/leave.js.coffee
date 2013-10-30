@@ -41,5 +41,5 @@ $(document).ready ->
   if "user" in search_params_keys
     $("#users_list").val search_params["user"]
 
-  $("#leave_application_start_date").datepicker()
-  $("#leave_application_end_date").datepicker()
+  $("#leave_application_start_date").datepicker({ dateFormat: "dd/mm/yy" })
+  $("#leave_application_end_date").datepicker({ dateFormat: "dd/mm/yy" })
