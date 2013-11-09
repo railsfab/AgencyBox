@@ -1,4 +1,5 @@
 AgencyBox::Application.routes.draw do
+  get "lead/index"
   devise_for :users
   root to: "home#index"
 
@@ -69,6 +70,10 @@ AgencyBox::Application.routes.draw do
 
   post "ticket/:ticket_id/ticket_comment/create" => "ticket_comment#create", as: :ticketcomment_create
 
+  get "lead/new"
+  post "lead/create"
+  get "lead/index"
+  get "lead/dashboard"
 
 
 

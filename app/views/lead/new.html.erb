@@ -1,0 +1,22 @@
+<button class='btn btn-info btn-lg bottom-flat'>New Lead</button>
+<div class='well' id="lead_new">
+<% if @lead.errors.any? %>
+    <p class='alert alert-danger'>Errors</p>
+    <% @lead.errors.full_messages.each do |e| %>
+        <p class='text-danger'><%= e %></p>
+    <% end %>
+<% end %>
+<%= form_for @lead, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+    <%= f.text_field :first_name, class: 'form-control', placeholder: 'First Name' %>
+    <br />
+    <%= f.text_field :last_name, class: 'form-control', placeholder: 'Last Name' %>
+    <br />
+    <%= f.text_field :email, class: 'form-control', placeholder: 'Email' %>
+    <br />
+    <%= f.select :source_id, Source: @lead.sources %>
+    <br />
+    <br />
+    <%= f.submit "Create", class: "btn btn-primary"%>
+
+<% end %>
+</div>
