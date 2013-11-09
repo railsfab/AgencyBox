@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131109060845) do
+ActiveRecord::Schema.define(version: 20131109100632) do
 
   create_table "expense_categories", force: true do |t|
     t.string   "name"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20131109060845) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email",                            null: false
+    t.text     "description"
     t.integer  "source_id"
     t.integer  "converted_on"
     t.boolean  "is_client",        default: false
@@ -116,6 +117,14 @@ ActiveRecord::Schema.define(version: 20131109060845) do
     t.string   "description"
     t.string   "slug"
     t.integer  "created_by_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tasks", force: true do |t|
+    t.string   "label"
+    t.string   "content"
+    t.integer  "lead_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
