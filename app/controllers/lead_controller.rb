@@ -8,13 +8,21 @@ class LeadController < ApplicationController
     end
 
     def create
-        @lead = Lead.new new_lead_params
+        @lead = Lead.new new_lead_param
         if @lead.valid?
             @lead.save
             redirect_to :lead_index
         else
             render :new
         end
+    end
+
+    def show
+        @lead = Lead.find params[:id]
+    end
+
+    def edit
+        @lead = Lead.find params[:id]
     end
 
     def dashboard

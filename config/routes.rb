@@ -74,6 +74,8 @@ AgencyBox::Application.routes.draw do
   post "lead/create"
   get "lead/index"
   get "lead/dashboard"
+  get "lead/show/:id" => "lead#show", as: "lead_show"
+  get "lead/edit/:id" => "lead#edit", as: "lead_edit"
 
 
 

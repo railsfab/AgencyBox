@@ -1,4 +1,29 @@
 <button class='btn btn-info btn-lg bottom-flat'>Leads</button>
-<% @leads.each do |lead| %>
-    <h1> <%= lead.email %> </h1>
+<div class="well" id="lead_index">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+
+        <tbody>
+    <% @leads.each do |lead| %>
+        <tr data-lead-url="<%= lead_show_path(lead) %>">
+            <td class="first-name"><%= lead.first_name %></td>
+            <td class="last-name"><%= lead.last_name %></td>
+            <td class="email"><%= lead.email %></td>
+        </tr>
+    <% end %>
+    </tbody>
+    </table>
+<% if @leads.empty? %>
+    <div class="well"> You have no open leads! </div>
+<% end %>
+</div>
+
+<% content_for :extra_js do %>
+    <%= javascript_include_tag "lead" %>
 <% end %>
