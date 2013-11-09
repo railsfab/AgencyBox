@@ -8,7 +8,7 @@ class LeadController < ApplicationController
     end
 
     def create
-        @lead = Lead.new new_lead_param
+        @lead = Lead.new new_lead_params
         if @lead.valid?
             @lead.save
             redirect_to :lead_index
@@ -33,6 +33,7 @@ class LeadController < ApplicationController
     
     def new_lead_params
         params.require(:lead).permit(
-            :first_name, :last_name, :email, :source_id)
+            :first_name, :last_name, :email, :source_id, :stage,
+            :description, :estimated_value)
     end
 end
