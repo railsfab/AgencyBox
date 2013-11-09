@@ -5,6 +5,8 @@
 $(document).ready ->
   $("#lead_index tr").each ->
     url = $(this).data "lead-url"
-    html = "<a href="+url+">"+$(this).find("td").html()+"</a>"
-    $(this).find("td").html html
+    $(this).find("td").each ->
+
+      html = "<a href="+url+">"+$(this).html()+"</a>"
+      $(this).html html
 

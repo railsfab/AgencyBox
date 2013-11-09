@@ -11,8 +11,14 @@
         <dt>Email:</dt>
         <dd><%= @lead.email %></dd>
 
+        <dt>Description:</dt>
+        <dd><%= @lead.description %></dd>
+
         <dt>Source: </dt>
         <dd><%= @lead.source.name %></dd>
+
+        <dt>Stage: </dt>
+        <dd><%= @lead.stage_display %></dd>
     </dl>
     <% if current_user.has_role? :admin %>
     <%= link_to :Edit, :lead_edit, class: "btn btn-primary" %>

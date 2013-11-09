@@ -14,6 +14,12 @@ class Lead < ActiveRecord::Base
     def sources
         LeadSource.pluck(:name, :id)
     end
+
+    def stage_display
+        required = STAGES.select{ |x| x[1] == self.stage }
+        required[0][0]
+    end
+
     
 
 

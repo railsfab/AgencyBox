@@ -6,6 +6,11 @@
             <th>First Name</th>
             <th>Last Name</th>
             <th>Email</th>
+            <th>Description</th>
+            <th>Stage</th>
+            <th>Next Action Date</th>
+            <th>Source</th>
+            <th>Estimated Value</th>
         </tr>
         </thead>
 
@@ -15,6 +20,11 @@
             <td class="first-name"><%= lead.first_name %></td>
             <td class="last-name"><%= lead.last_name %></td>
             <td class="email"><%= lead.email %></td>
+            <td class="description"><%= lead.description %></td>
+            <td ><%= lead.stage_display %></td>
+            <td ><%= lead.next_action_date %></td>
+            <td ><%= lead.source.name %></td>
+            <td ><%= lead.estimated_value %></td>
         </tr>
     <% end %>
     </tbody>
