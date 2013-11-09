@@ -5,6 +5,11 @@ class Lead < ActiveRecord::Base
     validates :source_id, presence: true
     validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
 
+    STAGES = [['Aware but not interested', 1],
+              ['Interested', 2],
+              ["Verbal commitment to buy", 3],
+              ["Purchased", 4]]
+
     def sources
         LeadSource.pluck(:name, :id)
     end
