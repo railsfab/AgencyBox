@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131030052719) do
+ActiveRecord::Schema.define(version: 20131109060845) do
 
   create_table "expense_categories", force: true do |t|
     t.string   "name"
@@ -38,6 +38,24 @@ ActiveRecord::Schema.define(version: 20131030052719) do
   create_table "holidays", force: true do |t|
     t.string   "name"
     t.date     "_on"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "lead_sources", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "leads", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email",                        null: false
+    t.integer  "source_id"
+    t.integer  "converted_on"
+    t.boolean  "is_client",    default: false
+    t.integer  "account_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
