@@ -4,6 +4,7 @@ class Lead < ActiveRecord::Base
     validates :email, presence: true
     validates :source_id, presence: true
     validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
+    validates :estimated_value, numericality: { only_integer: true }
 
     STAGES = [['Aware but not interested', 1],
               ['Interested', 2],
