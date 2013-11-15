@@ -82,6 +82,9 @@
         <% end %>
     </div>
 <% end %>
+<% if @expenses.length.zero? %>
+No expenses found for this filter !
+<% end %>
 </div>
 
 
