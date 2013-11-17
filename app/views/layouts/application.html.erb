@@ -83,7 +83,7 @@
 <p class="alert"><%= alert %></p>
 <%= yield %>
 <script type="text/javascript">
-    var controller_name="<%= params[:controller] %>".trim(),
+    var controller_name="<%= params[:controller] %>".trim(), action_name="<%= params[:action] %>",
         controller_index = "<%= silent_url_for({:controller => params[:controller], :action => :index}) %>";
 </script>
   <%= javascript_include_tag "application" %>

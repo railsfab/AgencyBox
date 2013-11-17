@@ -1,0 +1,10 @@
+<ul class="nav nav-tabs nav-justified">
+    <li id="project-subnav-li"><%= link_to @project.name, project_show_path(@project.slug) %></li>
+    <li id="tickets-subnav-li"><%= link_to :Tickets, project_tickets_path(@project.slug) %></li>
+    <li id="new-ticket-subnav-li"><%= link_to "New Ticket", new_ticket_path(@project.slug) %></li>
+</ul>
+
+
+<% content_for :extra_js do %>
+<%= javascript_include_tag "projects" %>
+<% end %>
