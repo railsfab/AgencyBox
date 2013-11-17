@@ -16,6 +16,6 @@
 <button class='btn btn-info btn-lg bottom-flat'>Members</button>
 <% @project.members.each do |member| %>
 <div class='well'>
-    <%= link_to member.available_name, user_show_path(member) %>
+    <%= link_to member.available_name, user_path(member) %>
 </div>
 <% end %>

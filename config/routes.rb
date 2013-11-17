@@ -39,10 +39,14 @@ AgencyBox::Application.routes.draw do
   get "admin/leave/edit/:id" => "leave_admin#edit", as: "admin_leave_edit"
   post "admin/leave/modify/:id" => "leave_admin#modify", as: "admin_leave_modify"
 
-  get "user/index" => "user#index", as: "user_index"
-  get "user/edit/" => "user#edit", as: "user_edit"
-  get "user/:id" => "user#show", as: "user_show"
-  patch "user/modify/" => "user#modify", as: "user_modify"
+  #get "user/index" => "user#index", as: "user_index"
+  #get "user/edit/" => "user#edit", as: "user_edit"
+  #get "user/:id" => "user#show", as: "user_show"
+  #patch "user/modify/" => "user#modify", as: "user_modify"
+  #
+  resources :users, only: [:index, :show]
+  get "profile/edit" => "users#edit", as: "edit_user"
+  patch "users/:id" => "users#update", as: "update_user"
 
   get "message/:id/new" => "message#new", as: :message_new
   post "message/:id/create" => "message#create", as: :message_create

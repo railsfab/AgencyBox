@@ -5,7 +5,7 @@
     <div class="user-block">
         <%= image_tag user.avatar.url(:medium), :class => "user-thumb" %>
         <br />
-        <div class="user-name"><%= link_to user.available_name, user_show_path(user) %></div>
+        <div class="user-name"><%= link_to user.available_name, user_path(user) %></div>
 
     </div>
 <% end %>

@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
     before_filter :authenticate_user!
 
     def show
@@ -13,12 +13,12 @@ class UserController < ApplicationController
         @user = current_user
     end
 
-    def modify
+    def update
         @user = current_user
         @user.assign_attributes modify_user_params
         if @user.valid?
             @user.save
-            redirect_to user_show_path(@user)
+            redirect_to user_path(@user)
         else
             render :edit
         end

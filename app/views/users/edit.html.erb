@@ -6,7 +6,7 @@
         <p class='text-danger'><%= e %></p>
     <% end %>
 <% end %>
-<%= form_for @user, url: {action: "modify"}, html: {class: "nifty_form"} do |f| %>
+<%= form_for @user, url: update_user_path(@user), html: {class: "nifty_form"} do |f| %>
     <%= f.text_field :first_name, class: 'form-control', placeholder: 'First Name' %>
     <br />
     <%= f.text_field :last_name, class: 'form-control', placeholder: 'Last Name' %>

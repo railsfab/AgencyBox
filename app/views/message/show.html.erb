@@ -9,10 +9,10 @@
 <div class="well message">
     <dl class="dl-horizontal">
         <dt>Started by: </dt>
-        <dd><%= link_to @message.sender.available_name, user_show_path(@message.sender) %></dd>
+        <dd><%= link_to @message.sender.available_name, user_path(@message.sender) %></dd>
 
         <dt>To: </dt>
-        <dd><%= link_to @message.recipient.available_name, user_show_path(@message.recipient) %></dd>
+        <dd><%= link_to @message.recipient.available_name, user_path(@message.recipient) %></dd>
 
         <dt>Subject: </dt>
         <dd><%= @message.subject %></dd>
@@ -26,9 +26,9 @@
     <div class="well">
     <dl class="dl-horizontal">
         <dt>From: </dt>
-        <dd><%= link_to conversation.sender.available_name, user_show_path(conversation.sender) %></dd>
+        <dd><%= link_to conversation.sender.available_name, user_path(conversation.sender) %></dd>
         <dt>To: </dt>
-        <dd><%= link_to conversation.recipient.available_name, user_show_path(conversation.recipient) %></dd>
+        <dd><%= link_to conversation.recipient.available_name, user_path(conversation.recipient) %></dd>
 
         <dt>Subject: </dt>
         <dd><%= conversation.subject %></dd>
