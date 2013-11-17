@@ -2,7 +2,7 @@
 <div class="well">
 <% @all.each do |category| %>
     <div class='category'>
-        <%= link_to category.name, expense_category_show_path(category.slug) %>
+        <%= link_to category.name, expense_category_path(category.slug) %>
     </div>
 <% end %>
 </div>

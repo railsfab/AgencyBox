@@ -1,4 +1,4 @@
-class ExpenseCategoryController < ApplicationController
+class Expense::CategoriesController < ApplicationController
     before_filter :authenticate_user!
 
     def index

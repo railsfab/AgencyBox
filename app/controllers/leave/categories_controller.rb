@@ -1,4 +1,4 @@
-class LeaveCategoryController < ApplicationController
+class Leave::CategoriesController < ApplicationController
     before_filter :authenticate_user!
 
 
@@ -10,7 +10,7 @@ class LeaveCategoryController < ApplicationController
         @category = LeaveCategory.new new_category_params
         if @category.valid?
             @category.save
-            redirect_to :leave_category_index
+            redirect_to :leave_categories
         else
             render :new
         end
@@ -28,13 +28,13 @@ class LeaveCategoryController < ApplicationController
         @category = LeaveCategory.find params[:id]
     end
 
-    def modify
+    def update 
         @category = LeaveCategory.find params[:id]
         @category.assign_attributes new_category_params
         
         if @category.valid?
             @category.save
-            redirect_to leave_category_show_path(@category)
+            redirect_to leave_category_path(@category)
         else
             render :edit
         end

@@ -5,7 +5,7 @@
         <dd><%= @expense.amount %></dd>
 
         <dt>User:</dt>
-        <dd><%= link_to @expense.user.available_name, user_show_path(@expense.user) %></dd>
+        <dd><%= link_to @expense.user.available_name, user_path(@expense.user) %></dd>
 
         <dt>Status:</dt>
         <dd><%= @expense.status_display %></dd>

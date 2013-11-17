@@ -17,6 +17,6 @@
         <dd><%= @leave.status_display %></dd>
 
         <dt>Category: </dt>
-        <dd><%= link_to @leave.category.name, leave_category_show_path(@leave.category) %></dd>
+        <dd><%= link_to @leave.category.name, leave_category_path(@leave.category) %></dd>
     </dl>
 </div>

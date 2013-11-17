@@ -14,7 +14,7 @@
         <dd><%= @leave.num_of_days %></dd>
 
         <dt>Category: </dt>
-        <dd><%= link_to @leave.category.name, leave_category_show_path(@leave.category) %></dd>
+        <dd><%= link_to @leave.category.name, leave_category_path(@leave.category) %></dd>
 
         <dt>Status:</dt>
         <dd><%= @leave.status_display %></dd>

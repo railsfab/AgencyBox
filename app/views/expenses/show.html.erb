@@ -11,7 +11,7 @@
         <dd><%= @expense.status_display %></dd>
 
         <dt>Category: </dt>
-        <dd><%= link_to @expense.category.name, expense_category_show_path(@expense.category.slug) %></dd>
+        <dd><%= link_to @expense.category.name, expense_category_path(@expense.category.slug) %></dd>
     </dl>
     <% if current_user.has_role? :admin %>
     <%= link_to :Edit, :expense_admin_edit %>

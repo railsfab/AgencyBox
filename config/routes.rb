@@ -12,10 +12,14 @@ AgencyBox::Application.routes.draw do
   
   
  
-  get "expense/category/index" => "expense_category#index"
-  get "expense/category/new" => "expense_category#new"
-  post "expense/category/create" => "expense_category#create"
-  get "expense/category/:slug" => "expense_category#show", as: "expense_category_show"
+  #get "expense/category/index" => "expense_category#index"
+  #get "expense/category/new" => "expense_category#new"
+  #post "expense/category/create" => "expense_category#create"
+  #get "expense/category/:slug" => "expense_category#show", as: "expense_category_show"
+  namespace :expense do
+    resources :categories, :except => [:show]
+    get "categories/:slug" => "categories#show", as: "expense_category"
+  end
 
   get "admin/expense/edit/:id" => "expense_admin#edit", as: "expense_admin_edit"
   post "admin/expense/modify/:id" => "expense_admin#modify", as: "expense_admin_modify"
@@ -23,12 +27,15 @@ AgencyBox::Application.routes.draw do
   get "admin/expense/category/edit/:id" => "expense_category#edit", as: "expense_category_admin_edit"
   patch "admin/expense/category/modify/:id" => "expense_category#modify", as: "expense_category_admin_modify"
 
-  get "admin/leave/category/new" => "leave_category#new", as: "leave_category_new"
-  get "admin/leave/category/edit/:id" => "leave_category#edit", as: "leave_category_edit"
-  post "admin/leave/category/create" => "leave_category#create", as: "leave_category_create"
-  patch "admin/leave/category/modify/:id" => "leave_category#modify", as: "leave_category_modify"
-  get "leave/category/index" => "leave_category#index", as: "leave_category_index"
-  get "leave/category/:id" => "leave_category#show", as: "leave_category_show"
+  #get "admin/leave/category/new" => "leave/categories#new", as: "leave_category_new"
+  #get "admin/leave/category/edit/:id" => "leave_category#edit", as: "leave_category_edit"
+  #post "admin/leave/category/create" => "leave_category#create", as: "leave_category_create"
+  #patch "admin/leave/category/modify/:id" => "leave_category#modify", as: "leave_category_modify"
+  #get "leave/category/index" => "leave_category#index", as: "leave_category_index"
+  #get "leave/category/:id" => "leave_category#show", as: "leave_category_show"
+  namespace :leave do
+    resources :categories
+  end
 
   #get "leave/new"
   #post "leave/create"

@@ -22,8 +22,8 @@
                 <ul class="dropdown-menu">
                     <li><%= link_to "My Expenses", :expenses %></li>
                     <li><%= link_to "New Expense", :new_expense %></li>
-                    <li><%= link_to "Categories", :expense_category_index %></li>
-                    <li><%= link_to "New Category", :expense_category_new %></li>
+                    <li><%= link_to "Categories", :expense_categories %></li>
+                    <li><%= link_to "New Category", :new_expense_category %></li>
                 </ul>
            </li>
            <li class='dropdown'>
@@ -31,9 +31,9 @@
                 <ul class="dropdown-menu">
                     <li><%= link_to "Leaves", :leaves %></li>
                     <li><%= link_to "New Leave", :new_leave %></li>
-                    <li><%= link_to "Categories", :leave_category_index %></li>
+                    <li><%= link_to "Categories", :leave_categories %></li>
                     <% if current_user.has_role? :admin %>
-                    <li><%= link_to "New Category", :leave_category_new %></li>
+                    <li><%= link_to "New Category", :new_leave_category %></li>
                     <% end %>
                 </ul>
            </li>
