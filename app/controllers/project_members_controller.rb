@@ -1,4 +1,4 @@
-class ProjectMemberController < ApplicationController
+class ProjectMembersController < ApplicationController
     before_filter :authenticate_user!
 
 

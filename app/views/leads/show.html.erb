@@ -21,6 +21,6 @@
         <dd><%= @lead.stage_display %></dd>
     </dl>
     <% if current_user.has_role? :admin %>
-    <%= link_to :Edit, :lead_edit, class: "btn btn-primary" %>
+    <%= link_to :Edit, :edit_lead, class: "btn btn-primary" %>
     <% end %>
 </div>

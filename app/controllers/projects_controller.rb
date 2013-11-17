@@ -1,4 +1,4 @@
-class ProjectController < ApplicationController
+class ProjectsController < ApplicationController
     before_filter :authenticate_user!
 
     
@@ -21,7 +21,7 @@ class ProjectController < ApplicationController
         @project = Project.find_by_slug params[:slug]
     end
 
-    def modify
+    def update
         @project = Project.find_by_slug params[:slug]
         @project.assign_attributes new_project_params
         

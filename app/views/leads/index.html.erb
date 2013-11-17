@@ -22,7 +22,7 @@
 
         <tbody>
     <% @leads.each do |lead| %>
-        <tr data-lead-url="<%= lead_show_path(lead) %>">
+        <tr data-lead-url="<%= lead_path(lead) %>">
             <td> <input type="checkbox" name="lead" id="<%= lead.id %>" /></td>
             <td class="first-name"><%= lead.first_name %></td>
             <td class="last-name"><%= lead.last_name %></td>

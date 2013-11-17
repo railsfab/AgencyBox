@@ -1,4 +1,4 @@
-class TicketController < ApplicationController
+class TicketsController < ApplicationController
     #before_filter :authenticate_user!
     #before_filter :admin_employee_auth, only: [:new, :edit, :create, :modify, :tickets]
     before_filter :authenticate_user!
@@ -30,7 +30,7 @@ class TicketController < ApplicationController
         @ticket.project_id = params[:project_id]
         @ticket.save
         flash[:notice] = "You have created a new ticket '#{new_ticket_params[:name]}'"
-        redirect_to ticket_show_path({ :project_slug => @ticket.project.slug, :id => @ticket })
+        redirect_to ticket_path({ :project_slug => @ticket.project.slug, :id => @ticket })
     end
 
     def modify

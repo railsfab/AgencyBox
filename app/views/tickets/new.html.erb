@@ -6,7 +6,7 @@
         <% end %>
     <% end %>
 
-    <%= form_for @ticket, url: ticket_create_path(@project) do |f| %>
+    <%= form_for @ticket, url: {action: :create,  project_id: @project.id} do |f| %>
         <div>
         <%= f.text_field :name, class: 'form-control', placeholder: 'Name' %>
         </div>
