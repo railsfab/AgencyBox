@@ -1,8 +1,14 @@
+
 <button class='btn btn-info btn-lg bottom-flat'>Leads</button>
-<div class="well" id="lead_index">
-    <table class="table table-bordered">
+<div class="" id="lead_index">
+<div class="actions">
+    <button class="btn btn-primary" id="convert-lead">Convert</button>
+    <button class="btn btn-primary" id="delete-lead">Delete</button>
+</div>
+    <table id="lead-index-table" class="table table-bordered tablesorter">
         <thead>
         <tr>
+            <th>Select</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Email</th>
@@ -17,6 +23,7 @@
         <tbody>
     <% @leads.each do |lead| %>
         <tr data-lead-url="<%= lead_show_path(lead) %>">
+            <td> <input type="checkbox" name="lead" id="<%= lead.id %>" /></td>
             <td class="first-name"><%= lead.first_name %></td>
             <td class="last-name"><%= lead.last_name %></td>
             <td class="email"><%= lead.email %></td>
@@ -35,5 +42,10 @@
 </div>
 
 <% content_for :extra_js do %>
+    <%= javascript_include_tag "jquery.tablesorter" %>
     <%= javascript_include_tag "lead" %>
+<% end %>
+
+<% content_for :extra_css do %>
+  <%= stylesheet_link_tag    "tablesorter_green/style", media: "all" %>
 <% end %>

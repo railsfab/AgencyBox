@@ -10,3 +10,5 @@ $(document).ready ->
       html = "<a href="+url+">"+$(this).html()+"</a>"
       $(this).html html
 
+  $("#lead_index table").tablesorter()
+
