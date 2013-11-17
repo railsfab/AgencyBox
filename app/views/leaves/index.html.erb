@@ -70,7 +70,7 @@
         <% if current_user.has_role? :admin %>
             <span class='medium-text'><%= link_to "#{leave.start_date } by #{leave.user.available_name}", admin_leave_edit_path(leave), title: "Click to edit" %></span>
         <% else %>
-        <span class='medium-text'><%= link_to "#{leave.start_date}", leave_show_path(leave) %></span>
+        <span class='medium-text'><%= link_to "#{leave.start_date}", leave_path(leave) %></span>
         <% end %>
         
         <% if leave.status_display == "Pending" %>

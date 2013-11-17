@@ -1,4 +1,4 @@
-class LeaveController < ApplicationController
+class LeavesController < ApplicationController
     before_filter :authenticate_user!
 
     def new
@@ -10,7 +10,7 @@ class LeaveController < ApplicationController
         if @leave.valid?
             @leave.user = current_user
             @leave.save
-            redirect_to :leave_index
+            redirect_to :leaves_path
         else
             render :new
         end

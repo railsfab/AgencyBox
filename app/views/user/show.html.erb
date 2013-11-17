@@ -5,8 +5,8 @@
         <dd><%= image_tag @user.avatar.url(:medium) %> <br /><%= @user.available_name %></dd>
 
         <dt>Links: </dt>
-        <dd><%= link_to "Leaves", leave_index_path(:user => @user.id) %>, 
-        <%= link_to "Expenses", expense_index_path(:user => @user.id) %>,
+        <dd><%= link_to "Leaves", leaves_path(:user => @user.id) %>, 
+        <%= link_to "Expenses", expenses_path(:user => @user.id) %>,
         <% if @user != current_user %>
         <%= link_to "Send Message", message_new_path(@user) %>
         <% end %> </dd>

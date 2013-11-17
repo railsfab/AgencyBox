@@ -19,6 +19,6 @@ class ExpenseAdminController < ApplicationController
             expense.rejected = true
         end
         expense.save
-        redirect_to expense_show_path(expense)
+        redirect_to expense_path(expense)
     end
 end

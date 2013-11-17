@@ -1,4 +1,4 @@
-class ExpenseController < ApplicationController
+class ExpensesController < ApplicationController
     #before_filter :authenticate_user!, :add_to_crumbs
     before_filter :authenticate_user!
 
@@ -46,7 +46,7 @@ class ExpenseController < ApplicationController
         if @expense.valid?
             @expense.user = current_user
             @expense.save
-            redirect_to :expense_index
+            redirect_to :expenses
         else
             render :new
         end

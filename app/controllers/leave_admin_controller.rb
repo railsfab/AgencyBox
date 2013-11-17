@@ -19,6 +19,6 @@ class LeaveAdminController < ApplicationController
             leave.rejected = true
         end
         leave.save
-        redirect_to leave_show_path(leave)
+        redirect_to leave_path(leave)
     end
 end

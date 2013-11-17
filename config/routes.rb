@@ -3,10 +3,14 @@ AgencyBox::Application.routes.draw do
   devise_for :users
   root to: "home#index"
 
-  get "expense/new"
-  get "expense/index"
-  get "expense/:id" => "expense#show", as: :expense_show
-  post "expense/create"
+  #get "expense/new"
+  #get "expense/index"
+  #get "expense/:id" => "expense#show", as: :expense_show
+  #post "expense/create"
+  #
+  resources :expenses
+  
+  
  
   get "expense/category/index" => "expense_category#index"
   get "expense/category/new" => "expense_category#new"
@@ -26,12 +30,11 @@ AgencyBox::Application.routes.draw do
   get "leave/category/index" => "leave_category#index", as: "leave_category_index"
   get "leave/category/:id" => "leave_category#show", as: "leave_category_show"
 
-  get "leave/new"
-  #get "leave/edit/:id"
-  post "leave/create"
-  #patch "leave/modify"
-  get "leave/index"
-  get "leave/show/:id" => "leave#show", as: "leave_show"
+  #get "leave/new"
+  #post "leave/create"
+  #get "leave/index"
+  #get "leave/show/:id" => "leave#show", as: "leave_show"
+  resources :leaves
 
   get "admin/leave/edit/:id" => "leave_admin#edit", as: "admin_leave_edit"
   post "admin/leave/modify/:id" => "leave_admin#modify", as: "admin_leave_modify"
