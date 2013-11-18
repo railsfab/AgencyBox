@@ -14,6 +14,6 @@
         <dd><%= link_to @expense.category.name, expense_category_path(@expense.category.slug) %></dd>
     </dl>
     <% if current_user.has_role? :admin %>
-    <%= link_to :Edit, :expense_admin_edit %>
+    <%= link_to :Edit, :edit_expense %>
     <% end %>
 </div>

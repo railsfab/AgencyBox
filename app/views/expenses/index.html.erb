@@ -68,7 +68,7 @@
 <% @expenses.each do |expense| %>
     <div class='expense'>
         <% if current_user.has_role? :admin %>
-        <span class='medium-text'><%= link_to "#{expense.amount} by #{expense.user.available_name}", expense_admin_edit_path(expense) %></span>
+        <span class='medium-text'><%= link_to "#{expense.amount} by #{expense.user.available_name}", edit_expense_path(expense) %></span>
         <% else %>
         <span class='medium-text'><%= link_to "#{expense.amount}", expense_path(expense) %></span>
         <% end %>

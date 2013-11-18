@@ -9,11 +9,12 @@ AgencyBox::Application.routes.draw do
     get "categories/:slug" => "categories#show", as: "expense_category"
   end
 
-  get "admin/expense/edit/:id" => "expense_admin#edit", as: "expense_admin_edit"
-  post "admin/expense/modify/:id" => "expense_admin#modify", as: "expense_admin_modify"
+  #get "expense/edit/:id" => "expense_admin#edit", as: "expense_admin_edit"
+  #post "expense/modify/:id" => "expense_admin#modify", as: "expense_admin_modify"
 
-  get "admin/expense/category/edit/:id" => "expense_category#edit", as: "expense_category_admin_edit"
-  patch "admin/expense/category/modify/:id" => "expense_category#modify", as: "expense_category_admin_modify"
+  #get "expense/category/edit/:id" => "expense_category#edit", as: "expense_category_admin_edit"
+  #patch "expense/category/modify/:id" => "expense_category#modify", as: "expense_category_admin_modify"
+
 
   namespace :leave do
     resources :categories
@@ -21,8 +22,8 @@ AgencyBox::Application.routes.draw do
 
   resources :leaves
 
-  get "admin/leave/edit/:id" => "leave_admin#edit", as: "admin_leave_edit"
-  post "admin/leave/modify/:id" => "leave_admin#modify", as: "admin_leave_modify"
+  get "leave/edit/:id" => "leave_admin#edit", as: "admin_leave_edit"
+  post "leave/modify/:id" => "leave_admin#modify", as: "admin_leave_modify"
 
   resources :users, only: [:index, :show]
   get "profile/edit" => "users#edit", as: "edit_user"

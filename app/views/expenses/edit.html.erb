@@ -15,8 +15,9 @@
     </dl>
     
         <div class="edit-form-div">
-        <form action='<%= expense_admin_modify_path(@expense) %>' method='post'>
+            <form action='<%= url_for({ controller: :expenses, action: :update, id: @expense.id}) %>' method='post'>
             <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>' />
+            <input name="_method" type="hidden" value="patch" />
                 <select name='expense_status' class="form-control">
                     <option value='Pending'>Pending</option>
                     <option value='Approved'>Approve</option>

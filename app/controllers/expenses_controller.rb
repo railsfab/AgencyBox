@@ -56,6 +56,27 @@ class ExpensesController < ApplicationController
         @expense = Expense.find params[:id]
     end
 
+    def edit
+        @expense = Expense.find params[:id]
+    end
+
+    def update
+        expense = Expense.find params[:id]
+        expense_status = params[:expense_status]
+        if expense_status == "Approved"
+            expense.status = true
+            expense.rejected = false
+        elsif expense_status == "Pending"
+            expense.status = false
+            expense.rejected = false
+        elsif expense_status == "Rejected"
+            expense.status = false
+            expense.rejected = true
+        end
+        expense.save
+        redirect_to expense_path(expense)
+    end
+
     private
 
     #def add_to_crumbs
