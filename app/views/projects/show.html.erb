@@ -1,4 +1,4 @@
-<%= render "shared/project_menu" %>
+<button class='btn btn-info btn-lg bottom-flat max-width'><%= @project.name %></button>
 <div class='well'>
     <dl class="dl-horizontal">
         <dt>Name: </dt>
@@ -15,9 +15,12 @@
 
 <button class='btn btn-info btn-lg bottom-flat'>Members</button>
 <div class='well'>
+    <div><%= link_to "Add", add_project_members_path(@project.slug), {class: 'btn btn-primary'} %> </div>
 <% @project.members.each do |member| %>
 
+    <div>
     <%= link_to member.available_name, user_path(member) %>
+    </div>
 
 <% end %>
 <% if @project.members.count.zero? %>

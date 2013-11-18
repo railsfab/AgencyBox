@@ -14,7 +14,7 @@
     <% @tickets.each do |ticket| %>
         <tr>
             <td>
-                <%= link_to ticket.name, ticket_path(:project_slug => ticket.project.slug, :id => ticket.id) %>
+                <%= link_to ticket.name, project_ticket_path(:project_slug => ticket.project.slug, :id => ticket.id) %>
             </td>
             <td>
                 <%= ticket.status %>

@@ -14,7 +14,13 @@
 //= require jquery_ujs
 
 $(document).ready(function(){
-    simple_crumbs();
+    if(typeof(main_controller_index_path) != "undefined"){
+        if(main_controller_index_path.trim().length && controller_index.trim().length){
+            namespace_crumbs();       
+        }
+    }else{
+        simple_crumbs();
+    }
 });
 
 function simple_crumbs(){
@@ -36,6 +42,30 @@ function simple_crumbs(){
     crumbs = crumbs.replace(/&raquo;$/, '');
 
     $("#simple-crumbs").html(crumbs);
+
+}
+
+function namespace_crumbs(){
+    var pathname_arr = window.location.pathname.split("/"),
+        crumbs = "<a href='/'>Home</a> &raquo; ";
+    if(pathname_arr.length < 2) { return; }
+    crumbs += "<a href='"+main_controller_index_path+"'>"+capitaliseFirstLetter(main_controller_name)+"</a> &raquo; "
+    if(namespace_pk.length){
+        crumbs += "<a href=''>"+namespace_pk+"</a> &raquo;"
+    }
+    crumbs += "<a href='"+controller_index+"'>"+capitaliseFirstLetter(controller_name.split("/")[1])+"</a> &raquo; "
+    
+    if(typeof(sub_controller_id) != "undefined"){
+        crumbs += sub_controller_id;
+    }else if(typeof(sub_controller_slug) != "undefined"){
+        crumbs += sub_controller_slug;
+    }else {
+        crumbs += capitaliseFirstLetter(action_name);
+    }
+
+
+    $("#simple-crumbs").html(crumbs);
+
 
 }
 

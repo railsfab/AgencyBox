@@ -3,10 +3,10 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 #
 $(document).ready ->
-  if controller_name == "tickets" and action_name == "new"
+  if controller_name == "project/tickets" and action_name == "new"
     $("#new-ticket-subnav-li").addClass "active"
-  if controller_name == "tickets" and action_name == "tickets"
-    $("#tickets-subnav-li").addClass "active"
-  if controller_name == "projects" and action_name == "show"
+  else if controller_name == "projects"
     $("#project-subnav-li").addClass "active"
+  else if controller_name == "project/tickets"
+    $("#tickets-subnav-li").addClass "active"
 

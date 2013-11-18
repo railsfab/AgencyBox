@@ -81,10 +81,23 @@
   </div>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
+<% if ["project/tickets", "projects"].include? params[:controller]  %>
+<%= render "shared/project_menu" %>
+<% end %>
 <%= yield %>
 <script type="text/javascript">
-    var controller_name="<%= params[:controller] %>".trim(), action_name="<%= params[:action] %>",
-        controller_index = "<%= silent_url_for({:controller => params[:controller], :action => :index}) %>";
+    var controller_name="<%= params[:controller] %>", action_name="<%= params[:action] %>",
+    controller_index = "<%= silent_url_for({:controller => params[:controller], :action => :index}) %>",
+    namespace_pk = "<%= params[:namespace_slug] or params[:namespace_id] %>";
+<% if params[:controller].index "/" %>
+    var main_controller_index_path = "<%= silent_url_for(controller: params[:controller].split("/")[0]+'s', action: :index) %>",
+        main_controller_name = "<%= params[:controller].split("/")[0]+'s' %>";
+    <% if params[:id] %>
+        var sub_controller_id = "<%= params[:id] %>";
+    <% elsif params[:slug] %>
+        var sub_controller_slug = "<%= params[:slug] %>";
+    <% end %>
+<% end %>
 </script>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "dropdown" %>

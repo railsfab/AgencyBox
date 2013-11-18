@@ -43,15 +43,23 @@ AgencyBox::Application.routes.draw do
   patch "projects/:slug/update" => "projects#update"
 
   get "projects/:slug/members/add" => "project_members#new", as: "add_project_members"
-  post "projects/:slug/members" => "project_members#create"
+  post "projects/:slug/members/add" => "project_members#create"
   
-  get "project/:project_slug/tickets/new" => "tickets#new", as: :new_ticket
   get "tickets/" => "tickets#index"
-  get "project/:project_slug/tickets/" => "tickets#tickets", as: :project_tickets
-  get "project/:project_slug/tickets/:id" => "tickets#show", as: :ticket
-  get "project/:project_slug/tickets/:id/edit" => "tickets#edit", as: :edit_ticket
-  post "project/:project_id/tickets" => "tickets#create"
-  patch "project/:project_slug/tickets/:id" => "tickets#update"
+  #get "project/:project_slug/tickets/new" => "tickets#new", as: :new_ticket
+  #get "project/:project_slug/tickets/" => "tickets#tickets", as: :project_tickets
+  #get "project/:project_slug/tickets/:id" => "tickets#show", as: :ticket
+  #get "project/:project_slug/tickets/:id/edit" => "tickets#edit", as: :edit_ticket
+  #post "project/:project_id/tickets" => "tickets#create"
+  #patch "project/:project_slug/tickets/:id/edit" => "tickets#update"
+  namespace :project do 
+    get ":namespace_slug/tickets/new" => "tickets#new", as: :new_ticket
+    get ":namespace_slug/tickets/" => "tickets#index", as: :tickets
+    get ":namespace_slug/tickets/:id" => "tickets#show", as: :ticket
+    get ":namespace_slug/tickets/:id/edit" => "tickets#edit", as: :edit_ticket
+    post ":namespace_id/tickets" => "tickets#create"
+    patch ":namespace_slug/tickets/:id/edit" => "tickets#update"
+  end
 
   post "ticket/:ticket_id/ticket_comment/create" => "ticket_comment#create", as: :ticketcomment_create
 

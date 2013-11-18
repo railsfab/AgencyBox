@@ -1,8 +1,19 @@
-<ul class="nav nav-tabs nav-justified">
+<ul class="nav nav-pills nav-justified">
+    <% if @project %>
+        <% if @project.id %>
     <li id="project-subnav-li"><%= link_to @project.name, project_show_path(@project.slug) %></li>
     <li id="tickets-subnav-li"><%= link_to :Tickets, project_tickets_path(@project.slug) %></li>
-    <li id="new-ticket-subnav-li"><%= link_to "New Ticket", new_ticket_path(@project.slug) %></li>
+    <li id="new-ticket-subnav-li"><%= link_to "New Ticket", project_new_ticket_path(@project.slug) %></li>
+        <% end %>
+    <% elsif @ticket %>
+    <li id="project-subnav-li"><%= link_to @ticket.project.name, project_show_path(@ticket.project.slug) %></li>
+    <li id="tickets-subnav-li"><%= link_to :Tickets, project_tickets_path(@ticket.project.slug) %></li>
+    <li id="new-ticket-subnav-li"><%= link_to "New Ticket", project_new_ticket_path(@ticket.project.slug) %></li>
+    <% end %>
 </ul>
+    <% if params[:controller] == "projects" and params[:action] == "index" %>
+        <button class='btn btn-info btn-lg bottom-flat'>Projects</button>
+    <% end %>
 
 
 <% content_for :extra_js do %>

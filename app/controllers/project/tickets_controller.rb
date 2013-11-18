@@ -1,39 +1,39 @@
-class TicketsController < ApplicationController
+class Project::TicketsController < ApplicationController
     #before_filter :authenticate_user!
     #before_filter :admin_employee_auth, only: [:new, :edit, :create, :modify, :tickets]
     before_filter :authenticate_user!
 
 
-    def index
+    def tickets
         @tickets = Ticket.where(assigned_to: current_user)
     end
 
-    def tickets
-        @project = Project.find_by_slug params[:project_slug]
+    def index
+        @project = Project.find_by_slug params[:namespace_slug]
         @tickets = @project.tickets
     end
 
     def new
         @ticket = Ticket.new
-        @project = Project.find_by_slug params[:project_slug]
+        @project = Project.find_by_slug params[:namespace_slug]
     end
 
     def edit
         @ticket = Ticket.find params[:id]
-        @project = Project.find_by_slug params[:project_slug]
+        @project = Project.find_by_slug params[:namespace_slug]
     end
 
     def create
         @ticket = Ticket.new new_ticket_params
         @ticket.status = "New"
         @ticket.reported_by = current_user
-        @ticket.project_id = params[:project_id]
+        @ticket.project_id = params[:namespace_id]
         @ticket.save
         flash[:notice] = "You have created a new ticket '#{new_ticket_params[:name]}'"
-        redirect_to ticket_path({ :project_slug => @ticket.project.slug, :id => @ticket })
+        redirect_to project_ticket_path({ :namespace_slug => @ticket.project.slug, :id => @ticket })
     end
 
-    def modify
+    def update 
         @ticket = Ticket.find params[:id]
         @ticket.assign_attributes edit_ticket_params
         changed = @ticket.changed
@@ -55,7 +55,7 @@ class TicketsController < ApplicationController
         end
 
         @ticket.save
-        redirect_to ticket_show_path({ :project_slug => @ticket.project.slug, :id => @ticket })
+        redirect_to project_ticket_path({ :namespace_slug => @ticket.project.slug, :id => @ticket })
     end
 
     def show
@@ -74,7 +74,7 @@ class TicketsController < ApplicationController
     end
 
     def admin_employee_auth
-        @project = Project.find params[:project_id]
+        @project = Project.find params[:namespace_id]
         @project.is_member?(current_user.id) || not_found
     end
 
