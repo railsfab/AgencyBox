@@ -5,16 +5,9 @@ AgencyBox::Application.routes.draw do
   resources :expenses
   
   namespace :expense do
+    get "categories/:slug" => "categories#show", as: "category"
     resources :categories, :except => [:show]
-    get "categories/:slug" => "categories#show", as: "expense_category"
   end
-
-  #get "expense/edit/:id" => "expense_admin#edit", as: "expense_admin_edit"
-  #post "expense/modify/:id" => "expense_admin#modify", as: "expense_admin_modify"
-
-  #get "expense/category/edit/:id" => "expense_category#edit", as: "expense_category_admin_edit"
-  #patch "expense/category/modify/:id" => "expense_category#modify", as: "expense_category_admin_modify"
-
 
   namespace :leave do
     resources :categories

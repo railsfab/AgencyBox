@@ -51,17 +51,23 @@ function namespace_crumbs(){
     if(pathname_arr.length < 2) { return; }
     crumbs += "<a href='"+main_controller_index_path+"'>"+capitaliseFirstLetter(main_controller_name)+"</a> &raquo; "
     if(namespace_pk.length){
-        crumbs += "<a href=''>"+namespace_pk+"</a> &raquo;"
+        if(typeof(namespace_pk_path) != "undefined"){
+            crumbs += "<a href='"+namespace_pk_path+"'>"+namespace_pk+"</a> &raquo;"
+        }else{
+            crumbs += namespace_pk+" &raquo; "
+        }
     }
     crumbs += "<a href='"+controller_index+"'>"+capitaliseFirstLetter(controller_name.split("/")[1])+"</a> &raquo; "
     
     if(typeof(sub_controller_id) != "undefined"){
-        crumbs += sub_controller_id;
+        crumbs += "<a href='"+item_path+"'>"+sub_controller_id+"</a> &raquo;";
     }else if(typeof(sub_controller_slug) != "undefined"){
-        crumbs += sub_controller_slug;
-    }else {
+        crumbs += "<a href='"+item_path+"'>"+sub_controller_slug+"</a> &raquo;";
+    }
+    if(action_name != "show"){
         crumbs += capitaliseFirstLetter(action_name);
     }
+    
 
 
     $("#simple-crumbs").html(crumbs);

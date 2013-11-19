@@ -9,6 +9,6 @@
     </dl>
 
     <% if current_user.has_role? :admin %>
-        <%= link_to :Edit, expense_category_admin_edit_path(@category) %>
+        <%= link_to :Edit, edit_expense_category_path(@category) %>
     <% end %>
 </div>

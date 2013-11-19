@@ -87,15 +87,25 @@
 <%= yield %>
 <script type="text/javascript">
     var controller_name="<%= params[:controller] %>", action_name="<%= params[:action] %>",
-    controller_index = "<%= silent_url_for({:controller => params[:controller], :action => :index}) %>",
+    controller_index = "<%= silent_url_for({:controller => params[:controller], :action => :index}) %>";
+    <% if params[:namespace_slug] %>
+        namespace_pk = "<%= params[:namespace_slug] %>";
+        namespace_pk_path = "<%= silent_url_for(controller: params[:controller].split('/')[0]+'s', action: :show, slug: params[:namespace_slug]) %>";
+    <% else %>
+        namespace_pk = "<%= params[:namespace_id] %>";
+        namespace_pk_path = "<%= silent_url_for(controller: params[:controller].split('/')[0]+'s', action: :show, slug: params[:namespace_id]) %>";
+
+    <% end %>
     namespace_pk = "<%= params[:namespace_slug] or params[:namespace_id] %>";
 <% if params[:controller].index "/" %>
     var main_controller_index_path = "<%= silent_url_for(controller: params[:controller].split("/")[0]+'s', action: :index) %>",
         main_controller_name = "<%= params[:controller].split("/")[0]+'s' %>";
     <% if params[:id] %>
-        var sub_controller_id = "<%= params[:id] %>";
+        var sub_controller_id = "<%= params[:id] %>",
+        item_path = "<%= silent_url_for({controller: params[:controller], action: :show, id: params[:id]}) %>";
     <% elsif params[:slug] %>
-        var sub_controller_slug = "<%= params[:slug] %>";
+        var sub_controller_slug = "<%= params[:slug] %>",
+        item_path = "<%= silent_url_for({controller: params[:controller], action: :show, slug: params[:slug]}) %>";
     <% end %>
 <% end %>
 </script>

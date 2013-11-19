@@ -23,13 +23,13 @@ class Expense::CategoriesController < ApplicationController
         @category = ExpenseCategory.find params[:id]
     end
 
-    def modify
+    def update 
         @category = ExpenseCategory.find params[:id]
         @category.assign_attributes create_category_params
         
         if @category.valid?
             @category.save
-            redirect_to expense_category_show_path(slug: @category.slug)
+            redirect_to expense_category_path(slug: @category.slug)
         else
             render :edit
         end
