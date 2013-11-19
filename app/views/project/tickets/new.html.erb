@@ -9,7 +9,7 @@
     <%= form_for @ticket, url: {action: :create,  namespace_id: @project.id} do |f| %>
         <%= f.text_field :name, class: 'form-control', placeholder: 'Name' %><br />
         <%= f.text_area :description, size: "40x12", class: 'form-control', placeholder: "Content" %><br />
-        <%= f.select :assigned_to_id, AssignedTo: @project.get_members %> <br />
+        <%= f.select :assigned_to_id, AssignedTo: @project_members %> <br />
         <br />
         <%= f.submit "Create", class: 'btn btn-primary' %>
         </div>

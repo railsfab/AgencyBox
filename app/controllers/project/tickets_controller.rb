@@ -16,6 +16,11 @@ class Project::TicketsController < ApplicationController
     def new
         @ticket = Ticket.new
         @project = Project.find_by_slug params[:namespace_slug]
+        @project_members = @project.get_members
+        if @project_members.empty?
+            flash[:notice] = "Please add members to the project before using tickets"
+            redirect_to add_project_members_path(slug: @project.slug)
+        end
     end
 
     def edit
