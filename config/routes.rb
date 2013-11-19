@@ -5,8 +5,9 @@ AgencyBox::Application.routes.draw do
   resources :expenses
   
   namespace :expense do
+    resources :categories, :only => [:new]
     get "categories/:slug" => "categories#show", as: "category"
-    resources :categories, :except => [:show]
+    resources :categories, :except => [:show, :new]
   end
 
   namespace :leave do
