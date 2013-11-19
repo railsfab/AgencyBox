@@ -13,7 +13,7 @@ class Expense::CategoriesController < ApplicationController
         @category = ExpenseCategory.new create_category_params
         if @category.valid?
             @category.save
-            redirect_to :expense_category_index
+            redirect_to :expense_categories
         else
             render :new
         end
