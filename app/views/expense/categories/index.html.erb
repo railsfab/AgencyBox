@@ -1,8 +1,9 @@
 <button class='btn btn-info btn-lg bottom-flat'>Categories</button>
 <div class="well">
 <% @all.each do |category| %>
-    <div class='category'>
-        <%= link_to category.name, expense_category_path(category.slug) %>
-    </div>
+        <button class='btn btn-primary btn-block btn-lg'><%= link_to category.name, expense_category_path(category.slug) %></button>
+<% end %>
+<% if @all.empty? %>
+    <h1 class='centered'>No categories yet. </h1>
 <% end %>
 </div>
