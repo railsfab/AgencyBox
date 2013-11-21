@@ -9,7 +9,7 @@
     </dl>
 
     <% if current_user.has_role? :admin %>
-        <%= link_to :Edit, edit_project_path(@project.slug) %>
+        <%= link_to :Edit, edit_project_path(@project.slug), class: "btn btn-primary" %>
     <% end %>
 </div>
 
