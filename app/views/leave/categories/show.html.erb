@@ -8,6 +8,6 @@
         <dd><%= @category.description %></dd>
     </dl>
     <% if current_user.has_role? :admin %>
-    <%= link_to :Edit, edit_leave_category_path(@category) %>
+    <%= link_to :Edit, edit_leave_category_path(@category), class: "btn btn-primary" %>
     <% end %>
 </div>

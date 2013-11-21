@@ -1,11 +1,9 @@
 <button class='btn btn-info btn-lg bottom-flat'>Leave Categories</button>
+<div class='well'>
 <% @categories.each do |category| %>
-    <div class='well'>
-        <%= link_to category.name, leave_category_path(category) %>
-    </div>
+    <button class='btn btn-primary btn-lg btn-block'><%= link_to category.name, leave_category_path(category) %></button>
 <% end %>
 <% if @categories.empty? %>
-    <div class="well">
-        No Categories yet, please create them.
-    </div>
+    <h1 class='centered'>   No Categories yet, please create them. </h1>
 <% end %>
+</div>
