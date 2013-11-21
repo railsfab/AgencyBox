@@ -1,5 +1,8 @@
+<div class='well'>
 <% @projects.each do |project| %>
-    <div class='well'>
-        <%= link_to project.name, project_show_path(project.slug) %>
-    </div>
+    <button class='btn btn-primary btn-lg btn-block'><%= link_to project.name, project_show_path(project.slug) %></button>
 <% end %>
+<% if @projects.empty? %>
+    <h1 class='centered'>No projects yet !</h1>
+<% end %>
+</div>
