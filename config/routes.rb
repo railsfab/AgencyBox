@@ -16,9 +16,6 @@ AgencyBox::Application.routes.draw do
 
   resources :leaves
 
-  get "leave/edit/:id" => "leave_admin#edit", as: "admin_leave_edit"
-  post "leave/modify/:id" => "leave_admin#modify", as: "admin_leave_modify"
-
   resources :users, only: [:index, :show]
   get "profile/edit" => "users#edit", as: "edit_user"
   patch "users/:id" => "users#update", as: "update_user"
