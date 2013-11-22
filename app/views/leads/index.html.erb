@@ -14,6 +14,10 @@
         <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>' />
         <input type="hidden" name="leads" class='checked-leads' value="" />
     </form>
+    <form action="<%= url_for(controller: :leads, action: :delete_multiple) %>" method="post" id="delete-lead-form">
+        <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>' />
+        <input type="hidden" name="_method" value="delete" />
+
     <table id="lead-index-table" class="table table-bordered tablesorter">
         <thead>
         <tr>
@@ -32,7 +36,7 @@
         <tbody>
     <% @leads.each do |lead| %>
         <tr data-lead-url="<%= lead_path(lead) %>">
-            <td> <input type="checkbox" class='cb-lead' lid="<%= lead.id %>" /></td>
+            <td> <input type="checkbox" class='cb-lead' lid="<%= lead.id %>" name="lead[id][]" value="<%= lead.id %>" /></td>
             <td class="first-name"><%= lead.first_name %></td>
             <td class="last-name"><%= lead.last_name %></td>
             <td class="email"><%= lead.email %></td>
@@ -45,6 +49,7 @@
     <% end %>
     </tbody>
     </table>
+    </form>
 
 
 </div>

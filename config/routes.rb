@@ -55,7 +55,11 @@ AgencyBox::Application.routes.draw do
 
   post "ticket/:ticket_id/ticket_comment/create" => "ticket_comment#create", as: :ticketcomment_create
 
-  resources :leads
+  resources :leads do
+      collection do
+          delete :delete_multiple
+      end
+  end
   get "leads/dashboard"
   post "leads/convert", as: :convert_lead
  

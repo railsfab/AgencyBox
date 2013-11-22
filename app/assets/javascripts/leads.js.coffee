@@ -36,3 +36,6 @@ $("#show-converted-leads").change ->
   if q
     url += "?#{q}"
   window.location = url
+
+$("#delete-lead").click ->
+  $("#delete-lead-form").submit()

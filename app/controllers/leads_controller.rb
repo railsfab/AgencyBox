@@ -46,6 +46,13 @@ class LeadsController < ApplicationController
 
     end
 
+    def delete_multiple
+        deletable = params[:lead][:id]
+        Lead.delete_all id: deletable
+        flash[:notice] = "Deleted selected leads successfully"
+        redirect_to :leads
+    end
+
     def dashboard
     end
 
