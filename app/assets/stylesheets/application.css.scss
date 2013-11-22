@@ -12,9 +12,9 @@
  *= require_tree .
  */
 
-body.html-body {
-    /*background-image: asset-url('retro_background.gif');*/
-    background-color: #665252;
+body{
+    background-image: asset-url('body_bg_orange.jpg');
+    /*background-color: #665252;*/
 }
 .container .bottom-flat {
     border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;
