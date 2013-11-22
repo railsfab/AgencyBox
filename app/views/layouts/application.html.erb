@@ -3,8 +3,6 @@
 <head>
   <title>AgencyBox</title>
   <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= stylesheet_link_tag    "bootstrap", media: "all" %>
- <%= yield :extra_css %>
 
   <%= csrf_meta_tags %>
 </head>
@@ -128,8 +126,6 @@
 <% end %>
 </script>
   <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag "dropdown" %>
- <%= yield :extra_js %>
 
 </div>
 </body>

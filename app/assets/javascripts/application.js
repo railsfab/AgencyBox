@@ -11,7 +11,11 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
+//= require jquery.ui.all
+//= require jquery.tablesorter
+//= require dropdown
+//= require_tree
+
 
 $(document).ready(function(){
     if(typeof(main_controller_index_path) != "undefined"){
