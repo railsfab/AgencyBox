@@ -46,3 +46,4 @@ gem 'devise'
 gem 'cancan'
 gem 'role_model'
 gem "paperclip", "~> 3.0"
+gem 'rails_12factor', group: :production
