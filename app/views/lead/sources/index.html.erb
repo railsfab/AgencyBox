@@ -1,0 +1,9 @@
+<button class='btn btn-info btn-lg bottom-flat'>Lead Sources</button>
+<div class="well">
+<% @sources.each do |source| %>
+        <button class='btn btn-primary btn-block btn-lg'><%= link_to source.name, lead_source_path(source) %></button>
+<% end %>
+<% if @sources.empty? %>
+    <h1 class='centered'>No lead sources yet. </h1>
+<% end %>
+</div>

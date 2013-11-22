@@ -1,6 +1,15 @@
 class LeadsController < ApplicationController
     def index
-        @leads = Lead.all
+        if params[:only_converted]
+            if params[:only_converted] == "true"
+                @leads = Lead.where(is_client: true)
+            else
+                @leads = Lead.where(is_client: false)
+            end
+        else
+            @leads = Lead.where(is_client: false)
+        end
+
     end
 
     def new
@@ -11,7 +20,7 @@ class LeadsController < ApplicationController
         @lead = Lead.new new_lead_params
         if @lead.valid?
             @lead.save
-            redirect_to :lead_index
+            redirect_to :leads
         else
             render :new
         end
@@ -23,6 +32,18 @@ class LeadsController < ApplicationController
 
     def edit
         @lead = Lead.find params[:id]
+    end
+
+    def convert
+        lead_ids = params[:leads]
+        lead_ids.sub! /^,/, ''
+        lead_ids.chomp! ','
+        lead_ids = lead_ids.split ','
+        leads = Lead.where(id: lead_ids)
+        leads.update_all(is_client: true, converted_on: Time.now)
+        flash[:notice] = "Selected leads converted successfully"
+        redirect_to :leads
+
     end
 
     def dashboard

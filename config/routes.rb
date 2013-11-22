@@ -57,6 +57,11 @@ AgencyBox::Application.routes.draw do
 
   resources :leads
   get "leads/dashboard"
+  post "leads/convert", as: :convert_lead
+ 
+  namespace :lead do
+      resources :sources
+  end
 
 
 

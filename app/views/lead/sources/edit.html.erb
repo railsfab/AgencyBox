@@ -1,0 +1,16 @@
+<button class='btn btn-info btn-lg bottom-flat'>Edit Lead Source</button>
+<div class='well'>
+<% if @source.errors.any? %>
+    <p class='alert alert-danger'>Errors</p>
+    <% @source.errors.full_messages.each do |e| %>
+        <p class='text-danger'><%= e %></p>
+    <% end %>
+<% end %>
+<%= form_for @source, url: {action: "update"}, html: {class: "nifty_form"} do |f| %>
+    <%= f.text_field :name, class: 'form-control', placeholder: 'Name' %>
+    <br />
+    <%= f.submit "Edit", class: "btn btn-primary"%>
+
+<% end %>
+</div>
+

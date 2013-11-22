@@ -1,11 +1,19 @@
 
 <button class='btn btn-info btn-lg bottom-flat'>Leads</button>
 <div class="well" id="lead_index">
+
 <div class="actions">
-    <button class="btn btn-primary" id="convert-lead">Convert</button>
+    <% if params[:only_converted] != "true" %>
+        <button class="btn btn-primary" id="convert-lead">Convert</button>
+    <% end %>
     <button class="btn btn-primary" id="delete-lead">Delete</button>
+    <input type="checkbox" id="show-converted-leads" style='margin-left:10px; margin-right: 5px;' />Show only converted leads
 </div>
 <div class="scroll-x-div">
+    <form action="<%= convert_lead_path() %>" method="post" id="convert-lead-form">
+        <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>' />
+        <input type="hidden" name="leads" class='checked-leads' value="" />
+    </form>
     <table id="lead-index-table" class="table table-bordered tablesorter">
         <thead>
         <tr>
@@ -24,7 +32,7 @@
         <tbody>
     <% @leads.each do |lead| %>
         <tr data-lead-url="<%= lead_path(lead) %>">
-            <td> <input type="checkbox" name="lead" id="<%= lead.id %>" /></td>
+            <td> <input type="checkbox" class='cb-lead' lid="<%= lead.id %>" /></td>
             <td class="first-name"><%= lead.first_name %></td>
             <td class="last-name"><%= lead.last_name %></td>
             <td class="email"><%= lead.email %></td>
@@ -37,15 +45,26 @@
     <% end %>
     </tbody>
     </table>
+
+
 </div>
 <% if @leads.empty? %>
-    <div class="well"> You have no open leads! </div>
+    <p></p>
+    <p>
+    <% if params[:only_converted] == "true" %>
+        You have no converted leads.
+    <% else %>
+        You have no open leads! 
+    <% end %>
+    </p>
+
 <% end %>
+
 </div>
 
 <% content_for :extra_js do %>
     <%= javascript_include_tag "jquery.tablesorter" %>
-    <%= javascript_include_tag "lead" %>
+    <%= javascript_include_tag "leads" %>
 <% end %>
 
 <% content_for :extra_css do %>

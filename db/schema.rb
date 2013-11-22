@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20131109100632) do
     t.string   "email",                            null: false
     t.text     "description"
     t.integer  "source_id"
-    t.integer  "converted_on"
+    t.datetime "converted_on"
     t.boolean  "is_client",        default: false
     t.integer  "account_id"
     t.integer  "estimated_value"
