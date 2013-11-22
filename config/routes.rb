@@ -64,7 +64,11 @@ AgencyBox::Application.routes.draw do
   post "leads/convert", as: :convert_lead
  
   namespace :lead do
-      resources :sources
+      resources :sources do
+          collection do
+              delete :delete_multiple
+          end
+      end
   end
 
 

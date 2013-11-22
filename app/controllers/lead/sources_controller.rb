@@ -33,7 +33,14 @@ class Lead::SourcesController < ApplicationController
             render :edit
         end
     end
-        
+
+    def delete_multiple
+        deletable = params[:source][:id]
+        LeadSource.delete_all id: deletable
+        flash[:notice] = "Deleted selected lead sources successfully"
+        redirect_to :lead_sources
+    end
+
 
     private
 

@@ -1,9 +1,29 @@
 <button class='btn btn-info btn-lg bottom-flat'>Lead Sources</button>
 <div class="well">
+    <% if current_user.has_role? :admin %>
+        <form action="<%= url_for(controller: "lead/sources", action: :delete_multiple) %>" method="post">
+            <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>' />
+            <input type="hidden" name="_method" value="delete" />
+            <p>
+            <button id="delete-lead-sources" class="btn btn-primary" >Delete</button>
+            </p>
+    <% end %>
 <% @sources.each do |source| %>
-        <button class='btn btn-primary btn-block btn-lg'><%= link_to source.name, lead_source_path(source) %></button>
+    <button class='btn btn-primary btn-block btn-lg btn-noaction'>
+        <% if current_user.has_role? :admin %>
+            <input type='checkbox' name='source[id][]' value="<%= source.id %>" class="pull-left" style="margin-left: 10px; " />
+        <% end %>
+        <%= link_to source.name, lead_source_path(source) %>
+    </button>
 <% end %>
+    <% if current_user.has_role? :admin %>
+        </form>
+    <% end %>
 <% if @sources.empty? %>
     <h1 class='centered'>No lead sources yet. </h1>
 <% end %>
 </div>
+
+<% content_for :extra_js do %>
+    <%= javascript_include_tag "lead/sources" %>
+<% end %>
