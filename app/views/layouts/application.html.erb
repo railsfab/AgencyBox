@@ -83,8 +83,17 @@
   <% end %>
   <div id="simple-crumbs" class="well well-sm">
   </div>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+
+      <% if notice %>
+    <div class='well well-sm'>
+        <p class="notice text-success"><%= notice %></p>
+    </div>
+      <% end %>
+      <% if alert %>
+        <div class='well well-sm'>
+            <p class="alert text-danger"><%= alert %></p>
+        </div>
+      <% end %>
     <div class='well'>
 <% if ["project/tickets", "projects"].include? params[:controller]  %>
     <%= render "shared/project_menu" %>
