@@ -10,7 +10,7 @@ class LeavesController < ApplicationController
         if @leave.valid?
             @leave.user = current_user
             @leave.save
-            redirect_to :leaves_path
+            redirect_to leaves_path
         else
             render :new
         end
