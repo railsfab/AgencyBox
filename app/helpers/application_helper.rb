@@ -8,4 +8,10 @@ module ApplicationHelper
         end
     end
 
+
+    def gravatar_image(email)
+        id = Digest::MD5.hexdigest(email)
+        "http://gravatar.com/avatar/#{id}.png?s=70"
+    end
+
 end

@@ -3,7 +3,7 @@
 <% @users.each do |user| %>
 
     <div class="user-block">
-        <%= image_tag user.avatar.url(:medium), :class => "user-thumb" %>
+        <%= image_tag gravatar_image(user.email), :class => "user-thumb" %>
         <br />
         <div class="user-name"><%= link_to user.available_name, user_path(user) %></div>
 
