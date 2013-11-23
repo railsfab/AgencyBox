@@ -1,3 +1,9 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#home .fa { color: #A52A2A; position: relative; left: 35%; }
+#home h1 { text-align: center; color: #A52A2A; margin-bottom: 20px; }
+#home .title { text-align: center; font-size: 15pt; font-weight: bold;  }
+#home .content { text-align: center; opacity: 0.7;}
+
