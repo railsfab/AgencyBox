@@ -49,3 +49,5 @@ gem 'cancan'
 gem 'role_model'
 gem "paperclip", "~> 3.0"
 gem 'rails_12factor', group: :production
+gem 'delayed_job_active_record'
+gem 'daemons'
