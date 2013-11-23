@@ -11,7 +11,7 @@ class LeavesController < ApplicationController
             @leave.user = current_user
             @leave.save
             flash[:notice] = "Leave successfully created"
-            UserMailer.delay.new_leave(@leave)
+            UserMailer.new_leave(@leave).deliver
             redirect_to leaves_path
         else
             render :new
