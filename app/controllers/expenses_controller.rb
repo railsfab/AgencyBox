@@ -46,6 +46,7 @@ class ExpensesController < ApplicationController
         if @expense.valid?
             @expense.user = current_user
             @expense.save
+            UserMailer.delay.new_expense(@expense)
             redirect_to :expenses
         else
             render :new

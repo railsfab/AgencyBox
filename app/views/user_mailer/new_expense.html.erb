@@ -1,0 +1,16 @@
+Dear <%= @expense.user.available_name %>,
+<p>
+You have claimed a new expense.
+</p>
+
+<p>
+    Amount: <%= @expense.amount %>
+</p>
+
+<p>
+    Description: <%= @expense.description %>
+</p>
+
+<p>
+    Category: <%= @expense.category.name %>
+</p>
