@@ -97,6 +97,12 @@
 <% if ["project/tickets", "projects"].include? params[:controller]  %>
     <%= render "shared/project_menu" %>
 <% end %>
+    <% if params[:controller] == "leaves" %>
+    <h4>You have applied for <%= current_user.total_leaves or 0 %> leaves this year.</h4>
+    <% end %>
+    <% if params[:controller] == "expenses" %>
+        <h4>Your expenses for this year: <%= current_user.total_expenses or 0 %></h4>
+    <% end %>
     <%= yield %>
     <div class="clearfix"></div>
     </div>

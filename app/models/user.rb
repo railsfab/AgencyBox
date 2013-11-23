@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :project_members
   has_many :projects, through: :project_members, uniq: true
   has_many :leaves, class_name: LeaveApplication, foreign_key: :user_id
+  has_many :expenses, class_name: Expense, foreign_key: :user_id
 
   attr_accessor :avatar
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" },
@@ -33,5 +34,13 @@ class User < ActiveRecord::Base
         end
         leaves = self.leaves.where("extract(year from created_at) = ?", year).pluck(:num_of_days)
         leaves.inject{|s,x| s+x}
+    end
+
+    def total_expenses(year=nil)
+        if not year
+            year = Time.now.year
+        end
+        expenses = self.expenses.where("extract(year from created_at) = ?", year).pluck(:amount)
+        expenses.inject{ |s,x| s+x }
     end
 end
