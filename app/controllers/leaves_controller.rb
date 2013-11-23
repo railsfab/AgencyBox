@@ -10,6 +10,7 @@ class LeavesController < ApplicationController
         if @leave.valid?
             @leave.user = current_user
             @leave.save
+            flash[:notice] = "Leave successfully created"
             redirect_to leaves_path
         else
             render :new
